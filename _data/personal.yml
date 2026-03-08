@@ -1,0 +1,54 @@
+# Personal Details
+name: "Raksha M"
+role: "Frontend Software Engineer"
+tagline: "Frontend engineer with 2+ years of experience building production-grade React applications"
+location: "Bangalore, India"
+email: "rakshamurali31@gmail.com"
+phone: "+91 8105542523"
+linkedin:
+  url: "https://linkedin.com/in/raksha-murali-871295238"
+  display: "linkedin.com/in/raksha-murali"
+github:
+  url: "https://github.com/raksha-m"
+  display: "github.com/raksha-m"
+
+# Stats
+stats:
+  - value: "2+"
+    label: "Years Experience"
+  - value: "10+"
+    label: "Projects"
+  - value: "5+"
+    label: "Awards"
+
+# Tech Stack
+tech_stack:
+  - "React"
+  - "TypeScript"
+  - "Tailwind"
+  - "Node.js"
+
+# About
+about:
+  summary: "I'm a frontend engineer with 2 years of experience specializing in React ecosystems. I've had the opportunity to build an entire company website from scratch at Jodo, create custom deep linking hooks, and even work on React modules inside a Flutter application. I love turning complex problems into simple, beautiful interfaces."
+  
+  highlights:
+    - title: "Clean Code"
+      description: "Writing maintainable, scalable code following best practices"
+      color: "primary"
+      icon: "code"
+    
+    - title: "Fast Performance"
+      description: "Optimizing applications for speed and efficiency"
+      color: "accent"
+      icon: "rocket"
+    
+    - title: "Problem Solver"
+      description: "Finding elegant solutions to complex challenges"
+      color: "secondary"
+      icon: "lightbulb"
+    
+    - title: "Quick Learner"
+      description: "Adapting to new technologies and frameworks rapidly"
+      color: "accent-green"
+      icon: "zap"

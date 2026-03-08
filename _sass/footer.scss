@@ -1,0 +1,157 @@
+// Footer
+.footer {
+  background: var(--navy-light);
+  color: white;
+  padding: 4rem 0 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 3rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+// Brand
+.footer-brand {
+  max-width: 24rem;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  display: inline-block;
+  margin-bottom: 1rem;
+  
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+.footer-logo-dot {
+  color: var(--primary);
+}
+
+.footer-description {
+  color: var(--gray-400);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+// Social Links
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.social-link {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-400);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(53, 85, 255, 0.2);
+    color: var(--primary);
+  }
+}
+
+.footer-built {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+// Links
+.footer-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.footer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  
+  a {
+    color: var(--gray-400);
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}
+
+// Bottom Bar
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
+}
+
+.footer-copyright {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.footer-heart {
+  color: var(--accent);
+}
+
+.back-to-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--gray-400);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+.back-to-top-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  
+  .back-to-top:hover & {
+    background: rgba(53, 85, 255, 0.2);
+  }
+}

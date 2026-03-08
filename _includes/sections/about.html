@@ -1,0 +1,27 @@
+<section class="about section" id="about">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <p class="section-subtitle">About Me</p>
+      <h2 class="section-title">
+        Passionate about building <span class="text-gradient">great products</span>
+      </h2>
+      <p class="section-description">
+        {{ site.data.personal.about.summary }}
+      </p>
+    </div>
+
+    <!-- Highlight Cards -->
+    <div class="about-grid">
+      {% for highlight in site.data.personal.about.highlights %}
+      <div class="about-card">
+        <div class="about-card-icon about-card-icon--{{ highlight.color }}">
+          <i class="fas fa-{{ highlight.icon }}"></i>
+        </div>
+        <h3 class="about-card-title">{{ highlight.title }}</h3>
+        <p class="about-card-description">{{ highlight.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

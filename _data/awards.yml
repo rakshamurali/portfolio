@@ -1,0 +1,24 @@
+# Awards & Achievements
+- title: "Jodo Hackathon Winner"
+  description: "Winner of 38-hour corporate hackathon at Jodo. Awarded ₹11,000 for building a chatbot using frontend technologies."
+  highlight: "₹11,000 Prize"
+  color: "primary"
+  icon: "trophy"
+
+- title: "Smart India Hackathon"
+  description: "Finalist in Smart India Hackathon, one of India's largest nationwide hackathons for students."
+  highlight: "Finalist"
+  color: "secondary"
+  icon: "medal"
+
+- title: "Navadhara Project Competition"
+  description: "Runner-up in Navadhara Project Competition for innovative project demonstration."
+  highlight: "Runner-up"
+  color: "accent"
+  icon: "award"
+
+- title: "Research Publication"
+  description: "Published research paper on Chauffeur Behaviour Recognition using CNNs in IJNRD Journal (2023)."
+  highlight: "IJNRD Journal"
+  color: "accent-green"
+  icon: "book-open"

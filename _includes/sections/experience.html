@@ -1,0 +1,61 @@
+<section class="experience section section-alt" id="experience">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <p class="section-subtitle">Work Experience</p>
+      <h2 class="section-title">
+        My professional <span class="text-gradient">journey</span>
+      </h2>
+      <p class="section-description">
+        A track record of building production-grade applications and delivering impactful solutions.
+      </p>
+    </div>
+
+    <!-- Experience Cards -->
+    <div class="experience-list">
+      {% for exp in site.data.experiences %}
+      <div class="experience-card">
+        <!-- Header -->
+        <div class="experience-card-header">
+          <div class="experience-card-company">
+            <div class="experience-card-icon experience-card-icon--{{ exp.color }}">
+              <i class="fas fa-{{ exp.icon }}"></i>
+            </div>
+            <div class="experience-card-info">
+              <h3 class="experience-card-name">{{ exp.company }}</h3>
+              <p class="experience-card-role">{{ exp.role }}</p>
+            </div>
+          </div>
+          
+          <div class="experience-card-meta">
+            <span class="experience-card-meta-item">
+              <i class="fas fa-calendar"></i>
+              {{ exp.duration }}
+            </span>
+            <span class="experience-card-meta-item">
+              <i class="fas fa-map-marker-alt"></i>
+              {{ exp.location }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <p class="experience-card-description">{{ exp.description }}</p>
+
+        <!-- Highlights -->
+        <div class="experience-card-highlights">
+          <p class="experience-card-highlights-title">Key Achievements:</p>
+          <ul class="experience-card-highlights-list">
+            {% for highlight in exp.highlights %}
+            <li class="experience-card-highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>{{ highlight }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

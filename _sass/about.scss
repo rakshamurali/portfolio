@@ -1,0 +1,82 @@
+// About Section
+.about {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gray-200), transparent);
+  }
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-card {
+  @extend .glass-card;
+  @extend .card-hover;
+  padding: 1.5rem;
+}
+
+.about-card-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+  
+  .about-card:hover & {
+    transform: scale(1.1);
+  }
+  
+  &--primary {
+    background: rgba(53, 85, 255, 0.1);
+    color: var(--primary);
+  }
+  
+  &--secondary {
+    background: rgba(127, 92, 255, 0.1);
+    color: var(--secondary);
+  }
+  
+  &--accent {
+    background: rgba(255, 106, 58, 0.1);
+    color: var(--accent);
+  }
+  
+  &--accent-green {
+    background: rgba(44, 195, 169, 0.1);
+    color: var(--accent-green);
+  }
+}
+
+.about-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.about-card-description {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+}

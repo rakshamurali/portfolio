@@ -1,0 +1,81 @@
+<section class="hero" id="hero">
+  <!-- Background Elements -->
+  <div class="hero-bg">
+    <div class="hero-bg-shape hero-bg-shape-1"></div>
+    <div class="hero-bg-shape hero-bg-shape-2"></div>
+    <div class="hero-bg-grid"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left Content -->
+      <div class="hero-content">
+        <p class="hero-subtitle">{{ site.data.personal.role }}</p>
+        <h1 class="hero-title">
+          Hi, I'm <span class="text-gradient">{{ site.data.personal.name }}</span>
+        </h1>
+        <p class="hero-description">
+          {{ site.data.personal.tagline }}. I craft clean, performant, and user-friendly web experiences.
+        </p>
+        
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">
+            View Projects
+            <i class="fas fa-arrow-down"></i>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <i class="fas fa-download"></i>
+            Download Resume
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <i class="fas fa-envelope"></i>
+            Contact Me
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Content - Profile Card -->
+      <div class="hero-card-wrapper">
+        <div class="hero-card" id="hero-card">
+          <!-- Card Header -->
+          <div class="hero-card-header">
+            <div class="hero-card-avatar">
+              {{ site.data.personal.name | slice: 0 | upcase }}{{ site.data.personal.name | split: ' ' | last | slice: 0 | upcase }}
+            </div>
+            <div class="hero-card-info">
+              <h3 class="hero-card-name">{{ site.data.personal.name }}</h3>
+              <p class="hero-card-role">{{ site.data.personal.role }}</p>
+            </div>
+          </div>
+          
+          <!-- Stats -->
+          <div class="hero-card-stats">
+            {% for stat in site.data.personal.stats %}
+            <div class="hero-card-stat">
+              <p class="hero-card-stat-value">{{ stat.value }}</p>
+              <p class="hero-card-stat-label">{{ stat.label }}</p>
+            </div>
+            {% endfor %}
+          </div>
+          
+          <!-- Tech Stack -->
+          <div class="hero-card-tech">
+            <p class="hero-card-tech-title">Tech Stack</p>
+            <div class="hero-card-tech-tags">
+              {% for tech in site.data.personal.tech_stack %}
+              <span class="hero-card-tech-tag">{{ tech }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="hero-card-float hero-card-float-1"></div>
+        <div class="hero-card-float hero-card-float-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Gradient -->
+  <div class="hero-bottom-gradient"></div>
+</section>

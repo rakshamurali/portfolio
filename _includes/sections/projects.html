@@ -1,0 +1,49 @@
+<section class="projects section" id="projects">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <p class="section-subtitle">Projects</p>
+      <h2 class="section-title">
+        Featured <span class="text-gradient">work</span>
+      </h2>
+      <p class="section-description">
+        A selection of projects that showcase my skills and experience in frontend development, machine learning, and mobile app development.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      {% for project in site.data.projects %}
+      <div class="project-card">
+        <!-- Icon -->
+        <div class="project-card-icon project-card-icon--{{ project.color }}">
+          <i class="fas fa-{{ project.icon }}"></i>
+        </div>
+
+        <!-- Content -->
+        <h3 class="project-card-title">{{ project.title }}</h3>
+        <p class="project-card-description">{{ project.description }}</p>
+
+        <!-- Tags -->
+        <div class="project-card-tags">
+          {% for tag in project.tags %}
+          <span class="project-card-tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+
+        <!-- Links -->
+        <div class="project-card-links">
+          <a href="{{ project.links.demo }}" class="project-card-link project-card-link--primary">
+            <i class="fas fa-external-link-alt"></i>
+            Live Demo
+          </a>
+          <a href="{{ project.links.github }}" class="project-card-link">
+            <i class="fab fa-github"></i>
+            Source Code
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

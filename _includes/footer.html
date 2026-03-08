@@ -1,0 +1,71 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          {{ site.name }}<span class="footer-logo-dot">.</span>
+        </a>
+        <p class="footer-description">
+          Frontend Software Engineer with 2+ years of experience building 
+          production-grade React applications. Passionate about creating 
+          clean, performant, and user-friendly web experiences.
+        </p>
+        
+        <!-- Social Links -->
+        <div class="social-links">
+          <a href="mailto:{{ site.email }}" class="social-link" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="{{ site.linkedin }}" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="{{ site.github }}" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="tel:{{ site.phone | replace: ' ', '' }}" class="social-link" aria-label="Phone">
+            <i class="fas fa-phone"></i>
+          </a>
+        </div>
+        
+        <p class="footer-built">Built with Jekyll, HTML & SCSS</p>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="footer-links">
+        <h4 class="footer-title">Navigation</h4>
+        <ul class="footer-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect Links -->
+      <div class="footer-links">
+        <h4 class="footer-title">Connect</h4>
+        <ul class="footer-list">
+          <li><a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="{{ site.github }}" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="mailto:{{ site.email }}">Email</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        &copy; {{ 'now' | date: '%Y' }} {{ site.name }}. Made with 
+        <i class="fas fa-heart footer-heart"></i> in Bangalore
+      </p>
+      
+      <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        Back to top
+        <span class="back-to-top-icon">
+          <i class="fas fa-arrow-up"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+</footer>

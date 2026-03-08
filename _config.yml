@@ -1,0 +1,43 @@
+# Site Settings
+title: "Raksha M"
+description: "Frontend Software Engineer with 2+ years of experience building production-grade React applications"
+baseurl: ""
+url: ""
+
+# Personal Information
+name: "Raksha M"
+role: "Frontend Software Engineer"
+tagline: "Frontend engineer with 2+ years of experience building production-grade React applications"
+location: "Bangalore, India"
+email: "rakshamurali31@gmail.com"
+phone: "+91 8105542523"
+linkedin: "https://linkedin.com/in/raksha-murali-871295238"
+github: "https://github.com/raksha-m"
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Sass
+sass:
+  style: compressed
+
+# Collections
+collections:
+  sections:
+    output: false
+
+# Exclude files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md

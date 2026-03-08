@@ -1,0 +1,64 @@
+<section class="awards section" id="awards">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <p class="section-subtitle">Achievements</p>
+      <h2 class="section-title">
+        Awards & <span class="text-gradient">recognitions</span>
+      </h2>
+      <p class="section-description">
+        Milestones that mark my journey of continuous learning and growth.
+      </p>
+    </div>
+
+    <!-- Awards Grid -->
+    <div class="awards-grid">
+      {% for award in site.data.awards %}
+      <div class="award-card">
+        <!-- Glow Effect -->
+        <div class="award-card-glow award-card-glow--{{ award.color }}"></div>
+
+        <!-- Content -->
+        <div class="award-card-content">
+          <!-- Icon -->
+          <div class="award-card-icon award-card-icon--{{ award.color }}">
+            <i class="fas fa-{{ award.icon }}"></i>
+          </div>
+
+          <!-- Highlight Badge -->
+          <div class="award-card-badge award-card-badge--{{ award.color }}">
+            <i class="fas fa-star"></i>
+            {{ award.highlight }}
+          </div>
+
+          <!-- Title -->
+          <h3 class="award-card-title">{{ award.title }}</h3>
+
+          <!-- Description -->
+          <p class="award-card-description">{{ award.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Stats Row -->
+    <div class="awards-stats">
+      <div class="awards-stat">
+        <p class="awards-stat-value">4+</p>
+        <p class="awards-stat-label">Awards Won</p>
+      </div>
+      <div class="awards-stat">
+        <p class="awards-stat-value">2+</p>
+        <p class="awards-stat-label">Years Experience</p>
+      </div>
+      <div class="awards-stat">
+        <p class="awards-stat-value">10+</p>
+        <p class="awards-stat-label">Projects Built</p>
+      </div>
+      <div class="awards-stat">
+        <p class="awards-stat-value">1</p>
+        <p class="awards-stat-label">Research Paper</p>
+      </div>
+    </div>
+  </div>
+</section>

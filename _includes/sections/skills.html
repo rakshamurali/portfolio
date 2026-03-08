@@ -1,0 +1,39 @@
+<section class="skills section section-alt" id="skills">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <p class="section-subtitle">Skills</p>
+      <h2 class="section-title">
+        Technologies & <span class="text-gradient">expertise</span>
+      </h2>
+      <p class="section-description">
+        A comprehensive toolkit I've developed through hands-on experience building real-world applications.
+      </p>
+    </div>
+
+    <!-- Skills Categories -->
+    <div class="skills-grid">
+      {% for category in site.data.skills.categories %}
+      <div class="skills-category">
+        <!-- Category Header -->
+        <div class="skills-category-header">
+          <div class="skills-category-icon skills-category-icon--{{ category.color }}">
+            <i class="fas fa-{{ category.icon }}"></i>
+          </div>
+          <h3 class="skills-category-title">{{ category.title }}</h3>
+        </div>
+
+        <!-- Skills List -->
+        <div class="skills-list">
+          {% for skill in category.skills %}
+          <div class="skill-item">
+            <i class="fas fa-{{ skill.icon }} skill-item-icon"></i>
+            <span class="skill-item-name">{{ skill.name }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

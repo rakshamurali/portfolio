@@ -1,0 +1,70 @@
+# Projects
+- title: "Jodo Company Website"
+  description: "Full production website built from scratch for Jodo fintech company. Features responsive design, smooth animations, and optimized performance."
+  tags:
+    - "React"
+    - "TypeScript"
+    - "Tailwind CSS"
+    - "GSAP"
+  links:
+    demo: "#"
+    github: "#"
+  color: "primary"
+  icon: "layers"
+  featured: true
+
+- title: "Deep Linking Hook"
+  description: "Custom React hook for handling URL query parameters, validating filters, and syncing state with the URL. Improves UX by enabling shareable filtered views."
+  tags:
+    - "React"
+    - "TypeScript"
+    - "URL API"
+    - "Custom Hooks"
+  links:
+    demo: "#"
+    github: "#"
+  color: "secondary"
+  icon: "code"
+  featured: true
+
+- title: "Credit Card Fraud Detection"
+  description: "Machine learning system that detects fraudulent transactions in real-time by analyzing transaction patterns and flagging suspicious activities."
+  tags:
+    - "Python"
+    - "Machine Learning"
+    - "Pandas"
+    - "Scikit-learn"
+  links:
+    demo: "#"
+    github: "#"
+  color: "accent"
+  icon: "shield"
+  featured: false
+
+- title: "MED-Life App"
+  description: "Android medicine database application for pharmaceutical distributors to manage medicine inventory, track supply, and improve customer relationships."
+  tags:
+    - "Android Studio"
+    - "Java"
+    - "XML"
+    - "SQLite"
+  links:
+    demo: "#"
+    github: "#"
+  color: "accent-green"
+  icon: "pill"
+  featured: false
+
+- title: "Chauffeur Behaviour Recognition"
+  description: "CNN-based deep learning model for driver behavior recognition. Published research paper in IJNRD Journal (2023). College major project."
+  tags:
+    - "Python"
+    - "TensorFlow"
+    - "CNN"
+    - "Computer Vision"
+  links:
+    demo: "#"
+    github: "#"
+  color: "secondary"
+  icon: "brain"
+  featured: false

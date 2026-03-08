@@ -1,0 +1,127 @@
+<section class="contact section section-dark" id="contact">
+  <!-- Background Decorations -->
+  <div class="contact-bg">
+    <div class="contact-bg-shape contact-bg-shape-1"></div>
+    <div class="contact-bg-shape contact-bg-shape-2"></div>
+  </div>
+
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header section-header--light">
+      <p class="section-subtitle">Get in Touch</p>
+      <h2 class="section-title">
+        Let's work <span class="text-gradient-animate">together</span>
+      </h2>
+      <p class="section-description">
+        Have a project in mind or want to discuss opportunities? I'd love to hear from you.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3 class="contact-info-title">Contact Information</h3>
+        
+        <div class="contact-links">
+          <a href="mailto:{{ site.email }}" class="contact-link">
+            <div class="contact-link-icon contact-link-icon--primary">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-link-info">
+              <p class="contact-link-label">Email</p>
+              <p class="contact-link-value">{{ site.email }}</p>
+            </div>
+            <i class="fas fa-arrow-up-right contact-link-arrow"></i>
+          </a>
+
+          <a href="tel:{{ site.phone | replace: ' ', '' }}" class="contact-link">
+            <div class="contact-link-icon contact-link-icon--accent">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-link-info">
+              <p class="contact-link-label">Phone</p>
+              <p class="contact-link-value">{{ site.phone }}</p>
+            </div>
+            <i class="fas fa-arrow-up-right contact-link-arrow"></i>
+          </a>
+
+          <a href="{{ site.linkedin }}" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link-icon contact-link-icon--secondary">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div class="contact-link-info">
+              <p class="contact-link-label">LinkedIn</p>
+              <p class="contact-link-value">{{ site.data.personal.linkedin.display }}</p>
+            </div>
+            <i class="fas fa-arrow-up-right contact-link-arrow"></i>
+          </a>
+
+          <a href="{{ site.github }}" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link-icon contact-link-icon--navy">
+              <i class="fab fa-github"></i>
+            </div>
+            <div class="contact-link-info">
+              <p class="contact-link-label">GitHub</p>
+              <p class="contact-link-value">{{ site.data.personal.github.display }}</p>
+            </div>
+            <i class="fas fa-arrow-up-right contact-link-arrow"></i>
+          </a>
+        </div>
+
+        <!-- Location -->
+        <div class="contact-location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>{{ site.data.personal.location }}</span>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper">
+        <h3 class="contact-form-title">Send a Message</h3>
+        
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Your Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              class="form-input" 
+              placeholder="John Doe"
+              required
+            >
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input" 
+              placeholder="john@example.com"
+              required
+            >
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              class="form-input form-textarea" 
+              rows="4"
+              placeholder="Tell me about your project..."
+              required
+            ></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-full">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
