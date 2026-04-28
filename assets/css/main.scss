@@ -11,7 +11,7 @@
   --accent-green: #2cc3a9;
   --navy: #191d30;
   --navy-light: #262a3e;
-  
+
   // Grays
   --gray-50: #f4f8fb;
   --gray-100: #f3f4f6;
@@ -23,32 +23,32 @@
   --gray-700: #374151;
   --gray-800: #1f2937;
   --gray-900: #111827;
-  
+
   // Background
   --bg-primary: #ffffff;
   --bg-secondary: #f4f8fb;
   --bg-dark: #191d30;
-  
+
   // Text
   --text-primary: #191d30;
   --text-secondary: #6b7280;
   --text-light: #ffffff;
-  
+
   // Fonts
-  --font-display: 'Poppins', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+
   // Spacing
   --section-padding: 6rem;
   --container-max: 1280px;
-  
+
   // Border radius
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
-  
+
   // Shadows
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -58,7 +58,9 @@
 }
 
 // Reset & Base
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -78,7 +80,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 600;
   line-height: 1.2;
@@ -131,11 +138,11 @@ img {
   .section-subtitle {
     color: var(--primary);
   }
-  
+
   .section-title {
     color: var(--text-light);
   }
-  
+
   .section-description {
     color: var(--gray-400);
   }
@@ -155,7 +162,7 @@ img {
   font-weight: 700;
   color: var(--navy);
   margin-bottom: 1rem;
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
   }
@@ -175,7 +182,12 @@ img {
 }
 
 .text-gradient-animate {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--secondary) 50%,
+    var(--primary) 100%
+  );
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -184,9 +196,15 @@ img {
 }
 
 @keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 // Buttons
@@ -202,7 +220,7 @@ img {
   transition: all 0.3s ease;
   cursor: pointer;
   border: none;
-  
+
   i {
     font-size: 0.875rem;
   }
@@ -211,7 +229,7 @@ img {
 .btn-primary {
   background-color: var(--primary);
   color: white;
-  
+
   &:hover {
     background-color: darken(#3555ff, 5%);
     transform: translateY(-2px);
@@ -223,7 +241,7 @@ img {
   background-color: white;
   color: var(--navy);
   border: 1px solid var(--gray-200);
-  
+
   &:hover {
     border-color: var(--primary);
     color: var(--primary);
@@ -257,7 +275,7 @@ img {
 // Card Hover
 .card-hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
@@ -274,3 +292,4 @@ img {
 @import "awards";
 @import "contact";
 @import "footer";
+@import "blog";

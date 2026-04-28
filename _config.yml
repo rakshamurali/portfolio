@@ -1,6 +1,9 @@
 # Site Settings
-title: "Raksha M"
-description: "Frontend Software Engineer with 2+ years of experience building production-grade React applications"
+name: Raksha M
+description: Frontend Engineer building scalable React apps
+url: "https://yourdomain.com"
+
+default_image: "/assets/images/thumbnail.png"
 baseurl: ""
 url: ""
 

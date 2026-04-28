@@ -1,4 +1,162 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-04-26T22:58:17+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Raksha M</title><subtitle>Frontend Software Engineer with 2+ years of experience building production-grade React applications</subtitle><entry><title type="html">Building a Custom Deep Linking Hook in React</title><link href="http://localhost:4000/react/javascript/2026/04/24/deep-linking-hook/" rel="alternate" type="text/html" title="Building a Custom Deep Linking Hook in React" /><published>2026-04-24T00:00:00+05:30</published><updated>2026-04-24T00:00:00+05:30</updated><id>http://localhost:4000/react/javascript/2026/04/24/deep-linking-hook</id><content type="html" xml:base="http://localhost:4000/react/javascript/2026/04/24/deep-linking-hook/"><![CDATA[<h1 id="-building-a-custom-deep-linking-hook-in-react">🚀 Building a Custom Deep Linking Hook in React</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <title>
+    Building a Custom Deep Linking Hook in React | Raksha M
+  </title>
+  <meta name="description" content="Frontend Software Engineer with 2+ years of experience building production-grade React applications" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Building a Custom Deep Linking Hook in React" />
+  <meta
+    property="og:description"
+    content="Learn how to manage navigation state using deep linking."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://localhost:4000/react/javascript/2026/04/24/deep-linking-hook/" />
+  <meta
+    property="og:image"
+    content=""
+  />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Building a Custom Deep Linking Hook in React" />
+  <meta
+    name="twitter:description"
+    content="Learn how to manage navigation state using deep linking."
+  />
+  <meta
+    name="twitter:image"
+    content=""
+  />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👩‍💻</text></svg>"
+  />
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Building a Custom Deep Linking Hook in React | Raksha M</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Building a Custom Deep Linking Hook in React" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Learn how to manage navigation state using deep linking." />
+<meta property="og:description" content="Learn how to manage navigation state using deep linking." />
+<link rel="canonical" href="http://localhost:4000/react/javascript/2026/04/24/deep-linking-hook/" />
+<meta property="og:url" content="http://localhost:4000/react/javascript/2026/04/24/deep-linking-hook/" />
+<meta property="og:site_name" content="Raksha M" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-04-24T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Building a Custom Deep Linking Hook in React" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-04-24T00:00:00+05:30","datePublished":"2026-04-24T00:00:00+05:30","description":"Learn how to manage navigation state using deep linking.","headline":"Building a Custom Deep Linking Hook in React","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/react/javascript/2026/04/24/deep-linking-hook/"},"url":"http://localhost:4000/react/javascript/2026/04/24/deep-linking-hook/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+  <nav class="nav" id="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-logo">
+      Raksha M<span class="nav-logo-dot">.</span>
+    </a>
+
+    <div class="nav-menu" id="nav-menu">
+      
+      <a href="/#about" class="nav-link">About</a>
+      <a href="/#experience" class="nav-link"
+        >Experience</a
+      >
+      <a href="/#projects" class="nav-link">Projects</a>
+      <a href="/#skills" class="nav-link">Skills</a>
+      <a href="/#awards" class="nav-link">Awards</a>
+      <a href="/#contact" class="nav-link">Contact</a>
+      
+
+      <a href="/blog" class="nav-link">Blog</a>
+    </div>
+
+    <a href="#contact" class="btn btn-primary nav-cta">Get in Touch</a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  
+  <a href="/#about" class="mobile-link">About</a>
+  <a href="/#experience" class="mobile-link"
+    >Experience</a
+  >
+  <a href="/#projects" class="mobile-link">Projects</a>
+  <a href="/#skills" class="mobile-link">Skills</a>
+  <a href="/#awards" class="mobile-link">Awards</a>
+  <a href="/#contact" class="mobile-link">Contact</a>
+  
+
+  <a href="/blog" class="mobile-link">Blog</a>
+  <a href="/#contact" class="btn btn-primary"
+    >Get in Touch</a
+  >
+</div>
+
+  
+  <main>
+    <main>
+  <!-- HERO -->
+  <section class="blog-post-hero section-dark">
+    <div class="container blog-post-center">
+      <div class="blog-post-meta">
+        <span>April 24, 2026</span>
+
+        
+        <div class="blog-tags">
+          
+          <span>react</span>
+          
+          <span>javascript</span>
+          
+        </div>
+        
+      </div>
+
+      <h1 class="blog-post-title">Building a Custom Deep Linking Hook in React</h1>
+
+      
+      <p class="blog-post-subtitle">Learn how to manage navigation state using deep linking.</p>
+      
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="blog-post-content">
+    <div class="container blog-post-container">
+      <article class="blog-post-article"><h1 id="-building-a-custom-deep-linking-hook-in-react">🚀 Building a Custom Deep Linking Hook in React</h1>
 
 <p>Modern web applications are no longer simple pages—they are dynamic, state-driven experiences. Whether it’s filters, dashboards, or search results, users expect the app to remember exactly where they left off.</p>
 
@@ -249,4 +407,133 @@ Isolated → Shareable</p>
 
 <p>If you’re building dashboards, filters, or any dynamic UI—<strong>deep linking should be your default approach.</strong></p>
 
-<hr />]]></content><author><name></name></author><category term="react" /><category term="javascript" /><summary type="html"><![CDATA[Learn how to manage navigation state using deep linking.]]></summary></entry></feed>
+<hr />
+</article>
+
+      <aside class="blog-sidebar">
+        <div class="sidebar-card">
+          <h3>About the Author</h3>
+          <p>Raksha M — Frontend Engineer building scalable React apps.</p>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>More Posts</h3>
+          <ul>
+            
+            <li>
+              <a href="/react/javascript/2026/04/24/deep-linking-hook/">Building a Custom Deep Linking Hook in React</a>
+            </li>
+            
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+  </main>
+  
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          Raksha M<span class="footer-logo-dot">.</span>
+        </a>
+        <p class="footer-description">
+          Frontend Software Engineer with 2+ years of experience building
+          production-grade React applications. Passionate about creating clean,
+          performant, and user-friendly web experiences.
+        </p>
+
+        <!-- Social Links -->
+        <div class="social-links">
+          <a
+            href="mailto:rakshamurali31@gmail.com"
+            class="social-link"
+            aria-label="Email"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a
+            href="https://linkedin.com/in/raksha-murali-871295238"
+            target="_blank"
+            rel="noopener"
+            class="social-link"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a
+            href="https://github.com/raksha-m"
+            target="_blank"
+            rel="noopener"
+            class="social-link"
+            aria-label="GitHub"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="tel:+918105542523"
+            class="social-link"
+            aria-label="Phone"
+          >
+            <i class="fas fa-phone"></i>
+          </a>
+        </div>
+
+        <p class="footer-built">Built with Jekyll, HTML & SCSS</p>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="footer-links">
+        <h4 class="footer-title">Navigation</h4>
+        <ul class="footer-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect Links -->
+      <div class="footer-links">
+        <h4 class="footer-title">Connect</h4>
+        <ul class="footer-list">
+          <li>
+            <a href="https://linkedin.com/in/raksha-murali-871295238" target="_blank" rel="noopener"
+              >LinkedIn</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/raksha-m" target="_blank" rel="noopener"
+              >GitHub</a
+            >
+          </li>
+          <li><a href="mailto:rakshamurali31@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        &copy; 2026 Raksha M. Crafted by me, with a touch of
+        AI assistance.
+      </p>
+
+      <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        Back to top
+        <span class="back-to-top-icon">
+          <i class="fas fa-arrow-up"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+</footer>
+
+  
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

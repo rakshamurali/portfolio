@@ -1,70 +1,112 @@
-# Projects
+# Company Projects
 - title: "Jodo Company Website"
   description: "Full production website built from scratch for Jodo fintech company. Features responsive design, smooth animations, and optimized performance."
+  company: "Jodo"
   tags:
-    - "React"
-    - "TypeScript"
-    - "Tailwind CSS"
-    - "GSAP"
-  links:
-    demo: "#"
-    github: "#"
+    - "Jekyll"
+  live_demo: "https://www.jodo.in"
   color: "primary"
-  icon: "layers"
+  icon: "globe"
+  featured: true
+
+- title: "Jodo Collect Microsite"
+  description: "Microsite for the Jodo Collect app - a payment collections platform. Built with focus on conversion and user experience."
+  company: "Jodo"
+  tags:
+    - "Jekyll"
+  live_demo: "https://collect.jodo.in/"
+  color: "secondary"
+  icon: "credit-card"
+  featured: true
+
+- title: "Jodo JS Utility Library"
+  description: "A modular TypeScript utility library used across both backend and frontend services at Jodo. Includes validation helpers, date formatters, and API utilities."
+  company: "Jodo"
+  tags:
+    - "TypeScript"
+    - "npm"
+    - "Unit Testing"
+    - "Modular Architecture"
+  color: "accent"
+  icon: "box"
   featured: true
 
 - title: "Deep Linking Hook"
-  description: "Custom React hook for handling URL query parameters, validating filters, and syncing state with the URL. Improves UX by enabling shareable filtered views."
+  description: "Custom React hook for handling URL query parameters, validating filters, and syncing state with the URL."
+  company: "Jodo"
   tags:
     - "React"
-    - "TypeScript"
     - "URL API"
-    - "Custom Hooks"
-  links:
-    demo: "#"
-    github: "#"
-  color: "secondary"
-  icon: "code"
-  featured: true
+  color: "accent-green"
+  icon: "link"
+  featured: false
 
+- title: "Help & Support Page"
+  description: "Built comprehensive Help & Support detail pages inside the Jodo Collect app, providing users with documentation and troubleshooting guides."
+  company: "Jodo"
+  tags:
+    - "React"
+  color: "primary"
+  icon: "headset"
+  featured: false
+
+# Personal / College Projects
 - title: "Credit Card Fraud Detection"
-  description: "Machine learning system that detects fraudulent transactions in real-time by analyzing transaction patterns and flagging suspicious activities."
+  description: "ML system that detects fraudulent transactions in real-time by analyzing transaction patterns."
   tags:
     - "Python"
     - "Machine Learning"
     - "Pandas"
     - "Scikit-learn"
-  links:
-    demo: "#"
-    github: "#"
+  source_code: "#"
   color: "accent"
-  icon: "shield"
+  icon: "shield-alt"
   featured: false
 
 - title: "MED-Life App"
-  description: "Android medicine database application for pharmaceutical distributors to manage medicine inventory, track supply, and improve customer relationships."
+  description: "Android medicine database application for pharmaceutical distributors to manage inventory."
   tags:
     - "Android Studio"
     - "Java"
     - "XML"
     - "SQLite"
-  links:
-    demo: "#"
-    github: "#"
+  source_code: "#"
   color: "accent-green"
-  icon: "pill"
+  icon: "pills"
   featured: false
 
 - title: "Chauffeur Behaviour Recognition"
-  description: "CNN-based deep learning model for driver behavior recognition. Published research paper in IJNRD Journal (2023). College major project."
+  description: "CNN-based deep learning model for driver behavior recognition. Published in IJNRD Journal (2023)."
   tags:
     - "Python"
     - "TensorFlow"
     - "CNN"
     - "Computer Vision"
-  links:
-    demo: "#"
-    github: "#"
+    - "Machine learning"
+  source_code: "#"
   color: "secondary"
   icon: "brain"
+  featured: false
+
+- title: "Traffic Signal Management System"
+  description: "Developed a traffic signal management system as part of 5th semester coursework using C++. The project focused on optimizing traffic flow logic and handling real-time signal transitions."
+  tags:
+    - "C++"
+    - "Data Structures"
+  source_code: "#"
+  color: "accent-orange"
+  icon: "traffic-light"
+  featured: false
+
+- title: "SEA Cafe Management System"
+  description: "Built a database-driven cafe management system during DBMS lab using XAMPP. Implemented features for order management, inventory tracking, and customer handling with a web-based interface."
+  tags:
+    - "HTML"
+    - "CSS"
+    - "MySQL"
+    - "XAMPP"
+    - "DBMS"
+  source_code: "#"
+  color: "accent-pink"
+  icon: "utensils"
   featured: false

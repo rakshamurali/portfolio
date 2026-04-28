@@ -3,18 +3,31 @@
     <a href="#" class="nav-logo">
       {{ site.name }}<span class="nav-logo-dot">.</span>
     </a>
-    
+
     <div class="nav-menu" id="nav-menu">
+      {% if page.url == "/" %}
       <a href="#about" class="nav-link">About</a>
       <a href="#experience" class="nav-link">Experience</a>
       <a href="#projects" class="nav-link">Projects</a>
       <a href="#skills" class="nav-link">Skills</a>
       <a href="#awards" class="nav-link">Awards</a>
       <a href="#contact" class="nav-link">Contact</a>
+      {% else %}
+      <a href="{{ '/' | relative_url }}#about" class="nav-link">About</a>
+      <a href="{{ '/' | relative_url }}#experience" class="nav-link"
+        >Experience</a
+      >
+      <a href="{{ '/' | relative_url }}#projects" class="nav-link">Projects</a>
+      <a href="{{ '/' | relative_url }}#skills" class="nav-link">Skills</a>
+      <a href="{{ '/' | relative_url }}#awards" class="nav-link">Awards</a>
+      <a href="{{ '/' | relative_url }}#contact" class="nav-link">Contact</a>
+      {% endif %}
+
+      <a href="{{ '/blog' | relative_url }}" class="nav-link">Blog</a>
     </div>
-    
+
     <a href="#contact" class="btn btn-primary nav-cta">Get in Touch</a>
-    
+
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
       <i class="fas fa-bars"></i>
     </button>
@@ -23,11 +36,26 @@
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
+  {% if page.url == "/" %}
   <a href="#about" class="mobile-link">About</a>
   <a href="#experience" class="mobile-link">Experience</a>
   <a href="#projects" class="mobile-link">Projects</a>
   <a href="#skills" class="mobile-link">Skills</a>
   <a href="#awards" class="mobile-link">Awards</a>
   <a href="#contact" class="mobile-link">Contact</a>
-  <a href="#contact" class="btn btn-primary">Get in Touch</a>
+  {% else %}
+  <a href="{{ '/' | relative_url }}#about" class="mobile-link">About</a>
+  <a href="{{ '/' | relative_url }}#experience" class="mobile-link"
+    >Experience</a
+  >
+  <a href="{{ '/' | relative_url }}#projects" class="mobile-link">Projects</a>
+  <a href="{{ '/' | relative_url }}#skills" class="mobile-link">Skills</a>
+  <a href="{{ '/' | relative_url }}#awards" class="mobile-link">Awards</a>
+  <a href="{{ '/' | relative_url }}#contact" class="mobile-link">Contact</a>
+  {% endif %}
+
+  <a href="{{ '/blog' | relative_url }}" class="mobile-link">Blog</a>
+  <a href="{{ '/' | relative_url }}#contact" class="btn btn-primary"
+    >Get in Touch</a
+  >
 </div>

@@ -12,12 +12,13 @@
       <div class="hero-content">
         <p class="hero-subtitle">{{ site.data.personal.role }}</p>
         <h1 class="hero-title">
-          Hi, I'm <span class="text-gradient">{{ site.data.personal.name }}</span>
+          <span class="text-gradient">{{ site.data.personal.name }}</span>
         </h1>
         <p class="hero-description">
-          {{ site.data.personal.tagline }}. I craft clean, performant, and user-friendly web experiences.
+          {{ site.data.personal.tagline }}. I craft clean, performant, and
+          user-friendly web experiences.
         </p>
-        
+
         <div class="hero-buttons">
           <a href="#projects" class="btn btn-primary">
             View Projects
@@ -40,14 +41,15 @@
           <!-- Card Header -->
           <div class="hero-card-header">
             <div class="hero-card-avatar">
-              {{ site.data.personal.name | slice: 0 | upcase }}{{ site.data.personal.name | split: ' ' | last | slice: 0 | upcase }}
+              {{ site.data.personal.name | slice: 0 | upcase }}{{
+              site.data.personal.name | split: ' ' | last | slice: 0 | upcase }}
             </div>
             <div class="hero-card-info">
               <h3 class="hero-card-name">{{ site.data.personal.name }}</h3>
               <p class="hero-card-role">{{ site.data.personal.role }}</p>
             </div>
           </div>
-          
+
           <!-- Stats -->
           <div class="hero-card-stats">
             {% for stat in site.data.personal.stats %}
@@ -57,7 +59,7 @@
             </div>
             {% endfor %}
           </div>
-          
+
           <!-- Tech Stack -->
           <div class="hero-card-tech">
             <p class="hero-card-tech-title">Tech Stack</p>
@@ -68,7 +70,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Floating Elements -->
         <div class="hero-card-float hero-card-float-1"></div>
         <div class="hero-card-float hero-card-float-2"></div>

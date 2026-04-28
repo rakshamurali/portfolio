@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<main>
+  <!-- HERO -->
+  <section class="blog-post-hero section-dark">
+    <div class="container blog-post-center">
+      <div class="blog-post-meta">
+        <span>{{ page.date | date: "%B %d, %Y" }}</span>
+
+        {% if page.categories %}
+        <div class="blog-tags">
+          {% for category in page.categories %}
+          <span>{{ category }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <h1 class="blog-post-title">{{ page.title }}</h1>
+
+      {% if page.excerpt %}
+      <p class="blog-post-subtitle">{{ page.excerpt }}</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="blog-post-content">
+    <div class="container blog-post-container">
+      <article class="blog-post-article">{{ content }}</article>
+
+      <aside class="blog-sidebar">
+        <div class="sidebar-card">
+          <h3>About the Author</h3>
+          <p>Raksha M — Frontend Engineer building scalable React apps.</p>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>More Posts</h3>
+          <ul>
+            {% for post in site.posts limit:5 %}
+            <li>
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>

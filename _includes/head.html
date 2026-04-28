@@ -1,24 +1,58 @@
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.name }}</title>
-  <meta name="description" content="{{ site.description }}">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <title>
+    {% if page.title %}{{ page.title }} | {% endif %}{{ site.name }}
+  </title>
+  <meta name="description" content="{{ site.description }}" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page.title | default: site.name }}" />
+  <meta
+    property="og:description"
+    content="{{ page.excerpt | default: site.description }}"
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ page.url | absolute_url }}" />
+  <meta
+    property="og:image"
+    content="{{ page.image | default: site.default_image | absolute_url }}"
+  />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ page.title | default: site.name }}" />
+  <meta
+    name="twitter:description"
+    content="{{ page.excerpt | default: site.description }}"
+  />
+  <meta
+    name="twitter:image"
+    content="{{ page.image | default: site.default_image | absolute_url }}"
+  />
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
   <!-- Styles -->
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👩‍💻</text></svg>">
-  
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👩‍💻</text></svg>"
+  />
+
   {% seo %}
 </head>

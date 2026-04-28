@@ -1,0 +1,58 @@
+---
+layout: default
+title: Blog
+---
+
+<section class="blog-hero section-dark">
+  <div class="container blog-post-center">
+    <p class="section-subtitle">BLOG</p>
+
+    <h1 class="blog-hero-title">
+      Thoughts on
+      <span class="text-gradient-animate">Frontend Engineering</span>
+    </h1>
+
+    <p class="blog-hero-description">
+      Sharing my learnings, tutorials, and insights from building
+      production-grade applications.
+    </p>
+  </div>
+</section>
+
+<section class="blog-grid-section">
+  <div class="container blog-container">
+    {% for post in site.posts %}
+    <article class="blog-card-horizontal">
+      <div class="blog-card-content">
+        <div class="blog-card-meta">
+          <span class="author-meta"> {{ post.date | date: "%B %d, %Y" }} </span>
+
+          <div class="blog-tags">
+            {% for category in post.categories %}
+            <span>{{ category }}</span>
+            {% endfor %}
+          </div>
+        </div>
+
+        <h2 class="blog-card-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h2>
+
+        <p class="blog-card-excerpt">
+          {{ post.excerpt | strip_html | truncate: 120 }}
+        </p>
+
+        <a href="{{ post.url | relative_url }}" class="blog-card-link">
+          Read More →
+        </a>
+      </div>
+
+      {% if post.image %}
+      <div class="blog-card-image">
+        <img src="{{ post.image }}" alt="{{ post.title }}" />
+      </div>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
