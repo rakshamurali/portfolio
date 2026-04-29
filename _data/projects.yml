@@ -58,7 +58,7 @@
     - "Machine Learning"
     - "Pandas"
     - "Scikit-learn"
-  source_code: "#"
+
   color: "accent"
   icon: "shield-alt"
   featured: false
@@ -70,7 +70,7 @@
     - "Java"
     - "XML"
     - "SQLite"
-  source_code: "#"
+
   color: "accent-green"
   icon: "pills"
   featured: false
@@ -83,7 +83,7 @@
     - "CNN"
     - "Computer Vision"
     - "Machine learning"
-  source_code: "#"
+
   color: "secondary"
   icon: "brain"
   featured: false
@@ -93,7 +93,7 @@
   tags:
     - "C++"
     - "Data Structures"
-  source_code: "#"
+
   color: "accent-orange"
   icon: "traffic-light"
   featured: false
@@ -106,7 +106,7 @@
     - "MySQL"
     - "XAMPP"
     - "DBMS"
-  source_code: "#"
+
   color: "accent-pink"
   icon: "utensils"
   featured: false
