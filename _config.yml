@@ -1,12 +1,9 @@
 # Site Settings
 name: Raksha M
 description: Frontend Engineer building scalable React apps
-
-
 default_image: "/assets/images/thumbnail.png"
 baseurl: "/portfolio"
-url: "https://rakshamurali.github.io"
-
+url: "https://rakshaportlio.co.in"
 # Personal Information
 name: "Raksha M"
 role: "Frontend Software Engineer"
