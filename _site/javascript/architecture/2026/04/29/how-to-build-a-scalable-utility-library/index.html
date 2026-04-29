@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <title>
+    How to Build a Scalable Utility Library | Raksha M
+  </title>
+  <meta name="description" content="Frontend Engineer building scalable React apps" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="How to Build a Scalable Utility Library" />
+  <meta
+    property="og:description"
+    content="A practical guide to designing reusable, maintainable, and scalable utility libraries."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://localhost:4000/javascript/architecture/2026/04/29/how-to-build-a-scalable-utility-library/" />
+  <meta
+    property="og:image"
+    content="http://localhost:4000/assets/images/thumbnail.png"
+  />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Build a Scalable Utility Library" />
+  <meta
+    name="twitter:description"
+    content="A practical guide to designing reusable, maintainable, and scalable utility libraries."
+  />
+  <meta
+    name="twitter:image"
+    content="http://localhost:4000/assets/images/thumbnail.png"
+  />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👩‍💻</text></svg>"
+  />
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>How to Build a Scalable Utility Library | Raksha M</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="How to Build a Scalable Utility Library" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A practical guide to designing reusable, maintainable, and scalable utility libraries." />
+<meta property="og:description" content="A practical guide to designing reusable, maintainable, and scalable utility libraries." />
+<link rel="canonical" href="http://localhost:4000/javascript/architecture/2026/04/29/how-to-build-a-scalable-utility-library/" />
+<meta property="og:url" content="http://localhost:4000/javascript/architecture/2026/04/29/how-to-build-a-scalable-utility-library/" />
+<meta property="og:site_name" content="Raksha M" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-04-29T00:00:00+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How to Build a Scalable Utility Library" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-04-29T00:00:00+05:30","datePublished":"2026-04-29T00:00:00+05:30","description":"A practical guide to designing reusable, maintainable, and scalable utility libraries.","headline":"How to Build a Scalable Utility Library","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/javascript/architecture/2026/04/29/how-to-build-a-scalable-utility-library/"},"url":"http://localhost:4000/javascript/architecture/2026/04/29/how-to-build-a-scalable-utility-library/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+  <nav class="nav" id="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-logo">
+      Raksha M<span class="nav-logo-dot">.</span>
+    </a>
+
+    <div class="nav-menu" id="nav-menu">
+      
+      <a href="/#about" class="nav-link">About</a>
+      <a href="/#experience" class="nav-link"
+        >Experience</a
+      >
+      <a href="/#projects" class="nav-link">Projects</a>
+      <a href="/#skills" class="nav-link">Skills</a>
+      <a href="/#awards" class="nav-link">Awards</a>
+      <a href="/#contact" class="nav-link">Contact</a>
+      
+
+      <a href="/blog" class="nav-link">Blog</a>
+    </div>
+
+    <a href="#contact" class="btn btn-primary nav-cta">Get in Touch</a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  
+  <a href="/#about" class="mobile-link">About</a>
+  <a href="/#experience" class="mobile-link"
+    >Experience</a
+  >
+  <a href="/#projects" class="mobile-link">Projects</a>
+  <a href="/#skills" class="mobile-link">Skills</a>
+  <a href="/#awards" class="mobile-link">Awards</a>
+  <a href="/#contact" class="mobile-link">Contact</a>
+  
+
+  <a href="/blog" class="mobile-link">Blog</a>
+  <a href="/#contact" class="btn btn-primary"
+    >Get in Touch</a
+  >
+</div>
+
+  
+  <main>
+    <main>
+  <!-- HERO -->
+  <section class="blog-post-hero section-dark">
+    <div class="container blog-post-center">
+      <div class="blog-post-meta">
+        <span>April 29, 2026</span>
+
+        
+        <div class="blog-tags">
+          
+          <span>javascript</span>
+          
+          <span>architecture</span>
+          
+        </div>
+        
+      </div>
+
+      <h1 class="blog-post-title">How to Build a Scalable Utility Library</h1>
+
+      
+      <p class="blog-post-subtitle">A practical guide to designing reusable, maintainable, and scalable utility libraries.</p>
+      
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="blog-post-content">
+    <div class="container blog-post-container">
+      <article class="blog-post-article"><h1 id="-how-to-build-a-scalable-utility-library">🚀 How to Build a Scalable Utility Library</h1>
+
+<p>As applications grow, one common problem starts to appear—<strong>the same logic gets rewritten again and again</strong>.</p>
+
+<p>Simple things like validation, formatting, and transformations slowly become duplicated across multiple parts of a codebase. Over time, this leads to inconsistency, bugs, and unnecessary maintenance effort.</p>
+
+<p>A well-designed utility library solves this by creating a <strong>single, reusable foundation for common logic</strong>.</p>
+
+<hr />
+
+<h2 id="-why-utility-libraries-matter">🔗 Why Utility Libraries Matter</h2>
+
+<p>Without a shared utility layer:</p>
+
+<ul>
+  <li>Different parts of the application behave differently</li>
+  <li>Fixes need to be applied in multiple places</li>
+  <li>Debugging becomes harder</li>
+  <li>Development slows down</li>
+</ul>
+
+<p>With a utility library:</p>
+
+<ul>
+  <li>Logic is consistent across the application</li>
+  <li>Updates are made in one place</li>
+  <li>Developers move faster</li>
+  <li>Code becomes easier to trust</li>
+</ul>
+
+<hr />
+
+<h2 id="think-before-you-build">Think Before You Build</h2>
+
+<p>Before writing anything, define the purpose clearly.</p>
+
+<p>A utility library should:</p>
+
+<ul>
+  <li>Solve <strong>common problems</strong>, not one-off cases</li>
+  <li>Be <strong>reusable across multiple features or projects</strong></li>
+  <li>Stay <strong>simple and focused</strong></li>
+  <li>Avoid unnecessary complexity</li>
+</ul>
+
+<p>If a function is not reused, it probably doesn’t belong in the library.</p>
+
+<hr />
+
+<h2 id="structure-matters">Structure Matters</h2>
+
+<p>One of the biggest mistakes in utility libraries is poor organization.</p>
+
+<p>A good structure should feel:</p>
+
+<ul>
+  <li>Predictable</li>
+  <li>Easy to navigate</li>
+  <li>Easy to extend</li>
+</ul>
+
+<p>Group related functionality together instead of scattering logic randomly. Each group should represent a clear domain or responsibility.</p>
+
+<hr />
+
+<h2 id="naming-is-everything">Naming is Everything</h2>
+
+<p>The biggest usability factor in a utility library is <strong>naming</strong>.</p>
+
+<p>A developer should understand what something does <strong>without opening the file</strong>.</p>
+
+<p>Good naming:</p>
+
+<ul>
+  <li>Clearly communicates purpose</li>
+  <li>Reduces confusion</li>
+  <li>Improves discoverability</li>
+</ul>
+
+<p>Avoid vague names like:</p>
+
+<ul>
+  <li>utils</li>
+  <li>helper</li>
+  <li>common</li>
+</ul>
+
+<p>Instead, prefer names that describe <strong>intent and behavior</strong>.</p>
+
+<hr />
+
+<h2 id="️-balance-is-key">⚖️ Balance is Key</h2>
+
+<p>There are two common mistakes:</p>
+
+<h3 id="1-over-simplification">1. Over-simplification</h3>
+
+<p>Everything is dumped into a few large files<br />
+→ Hard to scale<br />
+→ Hard to maintain</p>
+
+<h3 id="2-over-engineering">2. Over-engineering</h3>
+
+<p>Too many tiny files for every small function<br />
+→ Hard to navigate<br />
+→ Adds unnecessary complexity</p>
+
+<p>The right approach lies in <strong>balance</strong>:</p>
+
+<ul>
+  <li>Keep related logic together</li>
+  <li>Avoid unnecessary splitting</li>
+  <li>Avoid bloated files</li>
+</ul>
+
+<hr />
+
+<h2 id="testing-is-non-negotiable">Testing is Non-Negotiable</h2>
+
+<p>Utility libraries are reused everywhere—so <strong>they must be reliable</strong>.</p>
+
+<p>Every function should be:</p>
+
+<ul>
+  <li>Tested for correct behavior</li>
+  <li>Tested for invalid inputs</li>
+  <li>Tested for edge cases</li>
+</ul>
+
+<p>Strong testing ensures:</p>
+
+<ul>
+  <li>Confidence in reuse</li>
+  <li>Fewer bugs in production</li>
+  <li>Easier refactoring later</li>
+</ul>
+
+<hr />
+
+<h2 id="keep-it-lightweight">Keep It Lightweight</h2>
+
+<p>A utility library should not feel heavy.</p>
+
+<p>Avoid:</p>
+
+<ul>
+  <li>Large dependencies</li>
+  <li>Complex configurations</li>
+  <li>Over-abstracted logic</li>
+</ul>
+
+<p>Keep it:</p>
+
+<ul>
+  <li>Minimal</li>
+  <li>Fast</li>
+  <li>Easy to integrate</li>
+</ul>
+
+<hr />
+
+<h2 id="make-it-easy-to-use">Make It Easy to Use</h2>
+
+<p>A good utility library should feel intuitive.</p>
+
+<p>Developers should be able to:</p>
+
+<ul>
+  <li>Find what they need quickly</li>
+  <li>Understand how to use it immediately</li>
+  <li>Integrate it without friction</li>
+</ul>
+
+<p>If people struggle to use it, they won’t use it.</p>
+
+<hr />
+
+<h2 id="common-mistakes-to-avoid">Common Mistakes to Avoid</h2>
+
+<ul>
+  <li>Adding everything into the library “just in case”</li>
+  <li>Using unclear or generic naming</li>
+  <li>Skipping tests</li>
+  <li>Over-complicating simple logic</li>
+  <li>Designing for scale too early</li>
+</ul>
+
+<hr />
+
+<h2 id="best-practices">Best Practices</h2>
+
+<ul>
+  <li>Start small and grow gradually</li>
+  <li>Focus on clarity over cleverness</li>
+  <li>Keep responsibilities well-defined</li>
+  <li>Maintain consistency in structure and naming</li>
+  <li>Continuously refactor as the library evolves</li>
+</ul>
+
+<hr />
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>A utility library is not just a collection of functions—it’s a <strong>foundation for consistency and scalability</strong>.</p>
+
+<p>When designed well, it:</p>
+
+<ul>
+  <li>Speeds up development</li>
+  <li>Reduces duplication</li>
+  <li>Improves code quality</li>
+  <li>Builds confidence across teams</li>
+</ul>
+
+<p>The goal is simple:</p>
+
+<p>Make common things easy, predictable, and reliable.</p>
+
+<p>That’s what makes a great utility library.</p>
+</article>
+
+      <aside class="blog-sidebar">
+        <div class="sidebar-card">
+          <h3>About the Author</h3>
+          <p>Raksha M — Frontend Engineer building scalable React apps.</p>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>More Posts</h3>
+          <ul>
+            
+            <li>
+              <a href="/javascript/architecture/2026/04/29/how-to-build-a-scalable-utility-library/">How to Build a Scalable Utility Library</a>
+            </li>
+            
+            <li>
+              <a href="/react/javascript/2026/04/24/deep-linking-hook/">Building a Custom Deep Linking Hook in React</a>
+            </li>
+            
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+  </main>
+  
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          Raksha M<span class="footer-logo-dot">.</span>
+        </a>
+        <p class="footer-description">
+          Frontend Software Engineer with 2+ years of experience building
+          production-grade React applications. Passionate about creating clean,
+          performant, and user-friendly web experiences.
+        </p>
+
+        <!-- Social Links -->
+        <div class="social-links">
+          <a
+            href="mailto:rakshamurali31@gmail.com"
+            class="social-link"
+            aria-label="Email"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a
+            href="https://linkedin.com/in/raksha-murali-871295238"
+            target="_blank"
+            rel="noopener"
+            class="social-link"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a
+            href="https://github.com/raksha-m"
+            target="_blank"
+            rel="noopener"
+            class="social-link"
+            aria-label="GitHub"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="tel:+918105542523"
+            class="social-link"
+            aria-label="Phone"
+          >
+            <i class="fas fa-phone"></i>
+          </a>
+        </div>
+
+        <p class="footer-built">Built with Jekyll, HTML & SCSS</p>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="footer-links">
+        <h4 class="footer-title">Navigation</h4>
+        <ul class="footer-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect Links -->
+      <div class="footer-links">
+        <h4 class="footer-title">Connect</h4>
+        <ul class="footer-list">
+          <li>
+            <a href="https://linkedin.com/in/raksha-murali-871295238" target="_blank" rel="noopener"
+              >LinkedIn</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/raksha-m" target="_blank" rel="noopener"
+              >GitHub</a
+            >
+          </li>
+          <li><a href="mailto:rakshamurali31@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        &copy; 2026 Raksha M. Crafted by me, with a touch of
+        AI assistance.
+      </p>
+
+      <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        Back to top
+        <span class="back-to-top-icon">
+          <i class="fas fa-arrow-up"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+</footer>
+
+  
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
