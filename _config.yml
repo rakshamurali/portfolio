@@ -2,7 +2,7 @@
 name: Raksha M
 description: Frontend Engineer building scalable React apps
 default_image: "/assets/images/thumbnail.png"
-baseurl: "/portfolio"
+baseurl: ""
 url: "https://rakshaportlio.co.in"
 # Personal Information
 name: "Raksha M"
