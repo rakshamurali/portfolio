@@ -1,11 +1,11 @@
 # Site Settings
 name: Raksha M
 description: Frontend Engineer building scalable React apps
-url: "https://yourdomain.com"
+
 
 default_image: "/assets/images/thumbnail.png"
-baseurl: ""
-url: ""
+baseurl: "/portfolio"
+url: "https://rakshamurali.github.io"
 
 # Personal Information
 name: "Raksha M"
