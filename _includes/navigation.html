@@ -41,6 +41,11 @@
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobile-menu">
+  <!-- CLOSE BUTTON -->
+  <button class="mobile-close" id="mobile-close" aria-label="Close menu">
+    <i class="fas fa-times"></i>
+  </button>
+
   {% if page.url == "/" %}
   <a href="#about" class="mobile-link">About</a>
   <a href="#experience" class="mobile-link">Experience</a>
@@ -60,9 +65,12 @@
   {% endif %}
 
   <a href="{{ '/blog' | relative_url }}" class="mobile-link">Blog</a>
+
+  <!-- FIXED CTA BUTTON -->
   <a
     href="{% if page.url == '/' %}#contact{% else %}{{ '/' | relative_url }}#contact{% endif %}"
-    class="btn btn-primary"
+    class="btn btn-primary mobile-cta"
   >
+    Get in Touch
   </a>
 </div>

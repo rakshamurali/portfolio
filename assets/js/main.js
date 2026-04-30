@@ -4,6 +4,16 @@ const navToggle = document.getElementById("nav-toggle");
 const mobileMenu = document.getElementById("mobile-menu");
 const backToTop = document.getElementById("back-to-top");
 const heroCard = document.getElementById("hero-card");
+const mobileClose = document.getElementById("mobile-close");
+
+if (mobileClose) {
+  mobileClose.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+    const icon = navToggle.querySelector("i");
+    icon.classList.remove("fa-times");
+    icon.classList.add("fa-bars");
+  });
+}
 
 // Navbar scroll effect
 window.addEventListener("scroll", () => {
