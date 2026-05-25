@@ -48,18 +48,18 @@
 
   {% if page.url == "/" %}
   <a href="#about" class="mobile-link">About</a>
+  <a href="#skills" class="mobile-link">Skills</a>
   <a href="#experience" class="mobile-link">Experience</a>
   <a href="#projects" class="mobile-link">Projects</a>
-  <a href="#skills" class="mobile-link">Skills</a>
   <a href="#awards" class="mobile-link">Awards</a>
   <a href="#contact" class="mobile-link">Contact</a>
   {% else %}
   <a href="{{ '/' | relative_url }}#about" class="mobile-link">About</a>
+  <a href="{{ '/' | relative_url }}#skills" class="mobile-link">Skills</a>
   <a href="{{ '/' | relative_url }}#experience" class="mobile-link"
     >Experience</a
   >
   <a href="{{ '/' | relative_url }}#projects" class="mobile-link">Projects</a>
-  <a href="{{ '/' | relative_url }}#skills" class="mobile-link">Skills</a>
   <a href="{{ '/' | relative_url }}#awards" class="mobile-link">Awards</a>
   <a href="{{ '/' | relative_url }}#contact" class="mobile-link">Contact</a>
   {% endif %}

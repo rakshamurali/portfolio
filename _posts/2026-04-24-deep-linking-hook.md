@@ -1,90 +1,102 @@
 ---
 layout: posts
 title: "Building a Custom Deep Linking Hook in React"
-excerpt: "Learn how to manage navigation state using deep linking."
+excerpt: "Learn how to manage navigation state using deep linking in React applications."
 categories: [react, javascript]
 ---
 
-# 🚀 Building a Custom Deep Linking Hook in React
+# Building a Custom Deep Linking Hook in React
 
-Modern web applications are no longer simple pages—they are dynamic, state-driven experiences. Whether it’s filters, dashboards, or search results, users expect the app to remember exactly where they left off.
+Modern web applications are highly dynamic and state-driven. Dashboards, filters, search pages, and reporting tools all rely heavily on maintaining UI state across navigation.
 
-But here’s the problem:
+However, many applications still struggle with common issues:
 
-Most apps lose state on refresh  
- Filters can’t be shared  
- Navigation becomes inconsistent
+- State resets on page refresh
+- Filtered views cannot be shared
+- Browser navigation behaves inconsistently
+- Debugging complex UI states becomes difficult
 
-This is where **deep linking** becomes a game changer.
+Deep linking solves these problems by moving application state into the URL.
 
 ---
 
-## 🔗 What is Deep Linking?
+# What is Deep Linking?
 
-Deep linking means storing your application state directly in the **URL**, so users can:
+Deep linking is the practice of storing application state inside the URL so that a specific page state can be restored directly from the link.
 
-- Bookmark it
-- Share it
-- Reload without losing context
+Example:
 
-### Example:
-
-```
-
+```txt
 /transactions?status=paid&amount=1000
-
 ```
 
-Instead of just opening a page, this URL opens a **specific state of the app**.
+````
+
+Instead of opening a generic page, this URL opens a specific filtered state of the application.
+
+This allows users to:
+
+- Refresh the page without losing state
+- Bookmark important views
+- Share exact filtered results
+- Navigate using browser history naturally
 
 ---
 
-## Why Deep Linking Matters
+# Why Deep Linking Matters
 
 Without deep linking:
 
 - Filters reset on refresh
-- Can't share exact views
-- Back/forward buttons break
-- Debugging becomes painful
+- Exact views cannot be shared
+- Browser back/forward navigation becomes unreliable
+- Reproducing bugs becomes difficult
 
 With deep linking:
 
-- State lives in the URL
-- Shareable links
-- Browser navigation works
-- Easy debugging
+- Application state becomes shareable
+- URLs become meaningful
+- Navigation feels native
+- Debugging becomes significantly easier
+
+Deep linking improves both user experience and developer experience.
 
 ---
 
-## The Idea
+# The Core Idea
 
-Instead of storing state in:
+Instead of storing state only in:
 
-- `localStorage`
-- React state only
+- React component state
+- Context
+- localStorage
 
-Store it in the **URL**
+Store important UI state directly in the URL.
 
-This makes your app:
+This creates applications that are:
 
-- Stateless
-- Predictable
-- Shareable
-
----
-
-## ⚙️ Hook Architecture
-
-We need a hook that:
-
-1. Reads URL parameters
-2. Validates them
-3. Syncs them with UI state
+- More predictable
+- Easier to debug
+- Easier to share
+- More resilient to refreshes
 
 ---
 
-## Implementation (JavaScript)
+# Hook Architecture
+
+A reusable deep linking hook typically handles three responsibilities:
+
+1. Read values from URL parameters
+2. Validate and transform values
+3. Synchronize URL state with UI state
+
+The goal is to create a single source of truth between the UI and the URL.
+
+---
+
+# Implementation
+
+## Custom Hook
 
 ```js
 import { useState, useEffect, useCallback } from "react";
@@ -94,7 +106,7 @@ export function useDeepLinking({ filtersConfig, onFilterChange }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters, setFilters] = useState({});
 
-  // Read from URL
+  // Read values from URL
   useEffect(() => {
     const urlFilters = {};
 
@@ -111,10 +123,13 @@ export function useDeepLinking({ filtersConfig, onFilterChange }) {
     });
 
     setFilters(urlFilters);
-    onFilterChange && onFilterChange(urlFilters);
+
+    if (onFilterChange) {
+      onFilterChange(urlFilters);
+    }
   }, []);
 
-  // Update URL
+  // Update URL parameters
   const updateFilters = useCallback(
     (newFilters) => {
       const params = new URLSearchParams(searchParams);
@@ -129,18 +144,24 @@ export function useDeepLinking({ filtersConfig, onFilterChange }) {
 
       setSearchParams(params);
       setFilters(newFilters);
-      onFilterChange && onFilterChange(newFilters);
+
+      if (onFilterChange) {
+        onFilterChange(newFilters);
+      }
     },
     [searchParams]
   );
 
-  return { filters, updateFilters };
+  return {
+    filters,
+    updateFilters,
+  };
 }
 ```
 
 ---
 
-## 🧪 Usage Example
+# Usage Example
 
 ```js
 function TransactionList() {
@@ -148,11 +169,11 @@ function TransactionList() {
     filtersConfig: [
       {
         key: "status",
-        validator: (v) => ["paid", "pending"].includes(v),
+        validator: (value) => ["paid", "pending"].includes(value),
       },
       {
         key: "amount",
-        transform: (v) => Number(v),
+        transform: (value) => Number(value),
       },
     ],
   });
@@ -167,75 +188,131 @@ function TransactionList() {
 
 ---
 
-## Key Benefits
+# Key Benefits
 
-### Shareable URLs
+## Shareable Application State
 
-Users can copy & share exact filtered views
-
-### Browser Navigation
-
-Back and forward buttons work naturally
-
-### Debugging
-
-Reproduce issues instantly via URL
-
-### Stateless UI
-
-No dependency on storage
+Users can share exact filtered views using a URL.
 
 ---
 
-## ⚠️ Challenges
+## Improved Browser Navigation
 
-### 1. Long URLs
-
-Keep only necessary params
-
-### 2. Invalid Values
-
-Always validate inputs
-
-### 3. Security
-
-Never expose sensitive data in URLs
+Back and forward navigation works naturally because state changes are reflected in browser history.
 
 ---
 
-## Best Practices
+## Easier Debugging
 
-- Use clean parameter names
-  `?status=paid`
-
-- Validate all inputs
-
-- Provide default fallback values
-
-- Ignore invalid parameters
+Developers can reproduce issues instantly by opening the same URL.
 
 ---
 
-## 🎯 When NOT to Use Deep Linking
+## Stateless UI Patterns
 
-Avoid deep linking for:
-
-- Sensitive data (tokens, passwords)
-- Temporary UI states
-- Large data payloads
+The URL becomes the source of truth for page state, reducing dependency on local storage or temporary in-memory state.
 
 ---
 
-## Final Thoughts
+# Common Challenges
 
-Deep linking is not just a feature—it’s a **fundamental design pattern** for modern web applications.
+## Long URLs
 
-It transforms your app from:
+Avoid storing unnecessary or large data structures in query parameters.
 
-Stateful → Stateless
-Complex → Predictable
-Isolated → Shareable
-
-If you’re building dashboards, filters, or any dynamic UI—**deep linking should be your default approach.**
+Keep URLs minimal and readable.
 
 ---
+
+## Invalid Query Parameters
+
+Users may manually edit URLs.
+
+Always validate and sanitize incoming parameters before applying them to the application state.
+
+---
+
+## Security Considerations
+
+Sensitive information should never be stored in URLs.
+
+Avoid exposing:
+
+- Tokens
+- Passwords
+- Personal information
+- Internal identifiers
+
+---
+
+# Best Practices
+
+## Use Clear Parameter Names
+
+Prefer:
+
+```txt
+?status=paid
+```
+
+Instead of:
+
+```txt
+?s=1
+```
+
+Readable URLs improve maintainability.
+
+---
+
+## Validate Every Parameter
+
+Never trust query parameters directly.
+
+Use validators and transformation logic consistently.
+
+---
+
+## Provide Default Fallbacks
+
+Applications should behave gracefully even when parameters are missing or invalid.
+
+---
+
+## Ignore Unsupported Values
+
+If a parameter is invalid, safely discard it instead of breaking the UI.
+
+---
+
+# When Not to Use Deep Linking
+
+Deep linking is powerful, but not every UI state belongs in the URL.
+
+Avoid using it for:
+
+- Sensitive information
+- Temporary modal states
+- Large payloads
+- Non-shareable UI interactions
+
+Use deep linking only for meaningful, restorable application state.
+
+---
+
+# Final Thoughts
+
+Deep linking is more than a convenience feature. It is a foundational architectural pattern for modern web applications.
+
+By synchronizing application state with the URL, applications become:
+
+- More predictable
+- Easier to navigate
+- Easier to debug
+- Easier to share
+
+For dashboards, filters, analytics pages, and dynamic interfaces, deep linking provides a significantly better user experience while simplifying state management.
+
+When implemented correctly, it creates applications that feel reliable, transparent, and intuitive.
+
+````
