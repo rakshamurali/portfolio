@@ -1,64 +1,26 @@
-<section class="awards section" id="awards">
-  <div class="container">
-    <!-- Section Header -->
-    <div class="section-header">
-      <p class="section-subtitle">Achievements</p>
-      <h2 class="section-title">
-        Awards & <span class="text-gradient">recognitions</span>
-      </h2>
-      <p class="section-description">
-        Milestones that mark my journey of continuous learning and growth.
-      </p>
+<section class="section" id="awards">
+  <div class="section__head">
+    <div>
+      <p class="badge reveal" style="--d: 120ms">Recognition</p>
+      <h2 class="headline reveal" style="--d: 180ms">Awards &amp;<br />milestones.</h2>
     </div>
-
-    <!-- Awards Grid -->
-    <div class="awards-grid">
-      {% for award in site.data.awards %}
-      <div class="award-card">
-        <!-- Glow Effect -->
-        <div class="award-card-glow award-card-glow--{{ award.color }}"></div>
-
-        <!-- Content -->
-        <div class="award-card-content">
-          <!-- Icon -->
-          <div class="award-card-icon award-card-icon--{{ award.color }}">
-            <i class="fas fa-{{ award.icon }}"></i>
-          </div>
-
-          <!-- Highlight Badge -->
-          <div class="award-card-badge award-card-badge--{{ award.color }}">
-            <i class="fas fa-star"></i>
-            {{ award.highlight }}
-          </div>
-
-          <!-- Title -->
-          <h3 class="award-card-title">{{ award.title }}</h3>
-
-          <!-- Description -->
-          <p class="award-card-description">{{ award.description }}</p>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-
-    <!-- Stats Row -->
-    <div class="awards-stats">
-      <div class="awards-stat">
-        <p class="awards-stat-value">3+</p>
-        <p class="awards-stat-label">Awards Won</p>
-      </div>
-      <div class="awards-stat">
-        <p class="awards-stat-value">2+</p>
-        <p class="awards-stat-label">Years Experience</p>
-      </div>
-      <div class="awards-stat">
-        <p class="awards-stat-value">10+</p>
-        <p class="awards-stat-label">Projects Built</p>
-      </div>
-      <div class="awards-stat">
-        <p class="awards-stat-value">1</p>
-        <p class="awards-stat-label">Research Paper</p>
-      </div>
-    </div>
+    <p class="lede screen__aside reveal" style="--d: 220ms">
+      Hackathons, competitions and a published paper along the way.
+    </p>
   </div>
+
+  <ol class="panel glass glass--soft panel--wide">
+    {% for award in site.data.awards %}
+    <li class="panel__row award reveal" style="--d: {{ forloop.index0 | times: 110 | plus: 200 }}ms">
+      <span class="panel__index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+      <div class="award__main">
+        <div>
+          <h3 class="panel__title">{{ award.title }}</h3>
+          <p class="panel__text">{{ award.description }}</p>
+        </div>
+        <p class="award__highlight">{{ award.highlight }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
 </section>

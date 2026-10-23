@@ -2,6 +2,7 @@
 name: Raksha M
 description: Frontend Engineer building scalable React apps
 default_image: "/assets/images/thumbnail.png"
+hero_video: "/assets/video/hero.mp4"
 baseurl: ""
 url: "https://rakshaportlio.co.in"
 # Personal Information

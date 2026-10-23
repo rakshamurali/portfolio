@@ -1,27 +1,46 @@
-<section class="about section" id="about">
-  <div class="container">
-    <!-- Section Header -->
-    <div class="section-header">
-      <p class="section-subtitle">About Me</p>
-      <h2 class="section-title">
-        Passionate about building <span class="text-gradient">great products</span>
+{%- assign p = site.data.personal -%}
+<section class="screen about" id="about">
+  <div class="screen__top">
+    <p class="badge reveal" style="--d: 120ms">About Me</p>
+    <p class="lede screen__aside screen__aside--wide reveal" style="--d: 220ms">{{ p.about.lede }}</p>
+  </div>
+
+  <div class="screen__bottom screen__bottom--split">
+    <div class="about__copy">
+      <h2 class="display reveal" style="--d: 180ms">
+        {% for line in p.about.headline %}{{ line }}{% unless forloop.last %}<br />{% endunless %}{% endfor %}
       </h2>
-      <p class="section-description">
-        {{ site.data.personal.about.summary }}
-      </p>
+      <p class="body-copy reveal" style="--d: 320ms">{{ p.about.summary }}</p>
+
+      <dl class="stats reveal" style="--d: 380ms">
+        {% for stat in p.stats %}
+        <div class="stats__item">
+          <dt class="mono-label">{{ stat.label }}</dt>
+          <dd>{{ stat.value }}</dd>
+        </div>
+        {% endfor %}
+      </dl>
+
+      <div class="cta-row reveal" style="--d: 420ms">
+        <a href="#projects" class="btn-solid">
+          View my work {% include icon.html name="chevron-right" size=14 %}
+        </a>
+        <a href="#contact" class="btn-glass btn-glass--pill">Get in touch</a>
+      </div>
     </div>
 
-    <!-- Highlight Cards -->
-    <div class="about-grid">
-      {% for highlight in site.data.personal.about.highlights %}
-      <div class="about-card">
-        <div class="about-card-icon about-card-icon--{{ highlight.color }}">
-          <i class="fas fa-{{ highlight.icon }}"></i>
+    <ol class="panel glass glass--soft">
+      {% for item in p.about.highlights %}
+      <li class="panel__row reveal" style="--d: {{ forloop.index0 | times: 110 | plus: 300 }}ms">
+        <span class="panel__index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+        <div>
+          <h3 class="panel__title">
+            {{ item.title }} {% include icon.html name="chevron-right" size=16 class="panel__chevron" %}
+          </h3>
+          <p class="panel__text">{{ item.description }}</p>
         </div>
-        <h3 class="about-card-title">{{ highlight.title }}</h3>
-        <p class="about-card-description">{{ highlight.description }}</p>
-      </div>
+      </li>
       {% endfor %}
-    </div>
+    </ol>
   </div>
 </section>

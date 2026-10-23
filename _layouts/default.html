@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 {% include head.html %}
-<body>
-  {% include navigation.html %}
-  
-  <main>
-    {{ content }}
-  </main>
-  
-  {% include footer.html %}
-  
+<body{% if page.url contains "/blog" or page.layout == "posts" %} class="is-reading"{% endif %}>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  {% include scroll-video.html %}
+
+  <div class="page">
+    {% include navigation.html %}
+
+    <main id="main">
+      {{ content }}
+    </main>
+
+    {% include footer.html %}
+  </div>
+
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>

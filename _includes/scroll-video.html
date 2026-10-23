@@ -1,0 +1,11 @@
+<div class="scroll-video" id="scroll-video" aria-hidden="true">
+  <video
+    class="scroll-video__video"
+    src="{{ site.hero_video | default: '/assets/video/hero.mp4' | relative_url }}"
+    muted
+    playsinline
+    preload="auto"
+  ></video>
+  <canvas class="scroll-video__canvas"></canvas>
+  <div class="scroll-video__scrim"></div>
+</div>
