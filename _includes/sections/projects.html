@@ -1,6 +1,6 @@
 {%- assign company_projects = site.data.projects | where: "company", "Jodo" -%}
 {%- assign other_projects = site.data.projects | where_exp: "project", "project.company == nil" -%}
-<section class="section" id="projects">
+<section class="section" id="projects" data-shape="bento">
   <div class="section__head">
     <div>
       <p class="badge reveal" style="--d: 120ms">Selected Work</p>

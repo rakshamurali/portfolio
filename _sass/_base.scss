@@ -90,52 +90,39 @@ button {
   }
 }
 
-// ---------- Scroll-scrubbed video ----------
-.scroll-video {
+// ---------- Scroll-driven particle scene ----------
+.scene {
   position: fixed;
   inset: 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 60% 50% at 62% 42%, rgba(78, 98, 140, 0.32), transparent 70%),
+    radial-gradient(ellipse 45% 40% at 18% 88%, rgba(255, 150, 70, 0.12), transparent 70%),
+    radial-gradient(ellipse 40% 35% at 90% 10%, rgba(120, 140, 200, 0.12), transparent 70%),
+    var(--bg);
 
-  &__video,
   &__canvas {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: opacity 500ms ease;
-  }
-
-  &__video {
     opacity: 0;
+    transition: opacity 1200ms ease;
   }
 
-  &__canvas {
-    opacity: 0;
-  }
-
-  &.has-frame &__video {
+  &.is-ready &__canvas {
     opacity: 1;
   }
 
-  &.frames-ready &__video {
-    opacity: 0;
-  }
-
-  &.frames-ready &__canvas {
-    opacity: 1;
-  }
-
-  // Keeps white text legible over the brighter frames of the video.
+  // Light vignette so the nav and footer sit on a calmer edge.
   &__scrim {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(10, 10, 10, 0.45) 0%, rgba(10, 10, 10, 0.1) 30%, rgba(10, 10, 10, 0.15) 70%, rgba(10, 10, 10, 0.55) 100%),
-      rgba(10, 10, 10, var(--scrim, 0.26));
+      linear-gradient(180deg, rgba(10, 10, 10, 0.35) 0%, transparent 25%, transparent 75%, rgba(10, 10, 10, 0.45) 100%),
+      rgba(10, 10, 10, var(--scrim, 0));
     transition: background-color 500ms ease;
   }
 }
@@ -242,9 +229,12 @@ button {
   -webkit-backdrop-filter: var(--blur);
   backdrop-filter: var(--blur);
 
+  // Large panels: a lighter frost so the particle scene still glints through.
   &--soft {
-    background: var(--glass-soft);
+    background: rgba(22, 24, 30, 0.42);
     border: 1px solid var(--line);
+    -webkit-backdrop-filter: blur(3px) saturate(1.2);
+    backdrop-filter: blur(3px) saturate(1.2);
   }
 }
 

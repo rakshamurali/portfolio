@@ -3,7 +3,7 @@ layout: default
 ---
 
 <article class="post">
-  <header class="post-hero">
+  <header class="post-hero" data-shape="code">
     <div class="blog-meta reveal">
       <time class="mono-label" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
       {% if page.categories %}
@@ -22,7 +22,7 @@ layout: default
     {% endif %}
   </header>
 
-  <div class="post-layout">
+  <div class="post-layout" data-shape="braces">
     <div class="post-article glass">{{ content }}</div>
 
     <aside class="post-aside">

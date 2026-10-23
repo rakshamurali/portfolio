@@ -3,7 +3,7 @@ layout: default
 title: Blog
 ---
 
-<section class="screen blog-hero">
+<section class="screen blog-hero" data-shape="braces">
   <div class="screen__top">
     <p class="badge reveal" style="--d: 120ms">Blog</p>
     <p class="lede screen__aside reveal" style="--d: 220ms">
@@ -13,7 +13,7 @@ title: Blog
   <h1 class="display reveal" style="--d: 180ms">Thoughts on<br />frontend engineering.</h1>
 </section>
 
-<section class="blog-grid">
+<section class="blog-grid" data-shape="windows">
   {% for post in site.posts %}
   <article class="blog-card glass glass--soft reveal" style="--d: {{ forloop.index0 | times: 110 | plus: 200 }}ms">
     {% if post.image %}

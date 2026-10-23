@@ -4,7 +4,7 @@
 <body{% if page.url contains "/blog" or page.layout == "posts" %} class="is-reading"{% endif %}>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  {% include scroll-video.html %}
+  {% include scene.html %}
 
   <div class="page">
     {% include navigation.html %}
@@ -16,6 +16,7 @@
     {% include footer.html %}
   </div>
 
+  <script src="{{ '/assets/js/scene.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
