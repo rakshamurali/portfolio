@@ -3,56 +3,45 @@ layout: default
 title: Blog
 ---
 
-<section class="blog-hero section-dark">
-  <div class="container blog-post-center">
-    <p class="section-subtitle">BLOG</p>
-
-    <h1 class="blog-hero-title">
-      Thoughts on
-      <span class="text-gradient-animate">Frontend Engineering</span>
-    </h1>
-
-    <p class="blog-hero-description">
-      Sharing my learnings, tutorials, and insights from building
-      production-grade applications.
+<section class="screen blog-hero">
+  <div class="screen__top">
+    <p class="badge reveal" style="--d: 120ms">Blog</p>
+    <p class="lede screen__aside reveal" style="--d: 220ms">
+      Learnings, tutorials and notes from building production-grade apps.
     </p>
   </div>
+  <h1 class="display reveal" style="--d: 180ms">Thoughts on<br />frontend engineering.</h1>
 </section>
 
-<section class="blog-grid-section">
-  <div class="container blog-grid">
-    {% for post in site.posts %}
-    <article class="blog-card">
-      {% if post.image %}
-      <div class="blog-card-image">
-        <img src="{{ post.image }}" alt="{{ post.title }}" />
-      </div>
-      {% endif %}
+<section class="blog-grid">
+  {% for post in site.posts %}
+  <article class="blog-card glass glass--soft reveal" style="--d: {{ forloop.index0 | times: 110 | plus: 200 }}ms">
+    {% if post.image %}
+    <div class="blog-card__image">
+      <img src="{{ post.image }}" alt="" loading="lazy" />
+    </div>
+    {% endif %}
 
-      <div class="blog-card-body">
-        <div class="blog-card-meta">
-          <span class="blog-date"> {{ post.date | date: "%b %d, %Y" }} </span>
-
-          <div class="blog-tags">
-            {% for category in post.categories %}
-            <span>{{ category }}</span>
-            {% endfor %}
-          </div>
+    <div class="blog-card__body">
+      <div class="blog-meta">
+        <time class="mono-label" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+        <div class="blog-tags">
+          {% for category in post.categories %}
+          <span>{{ category }}</span>
+          {% endfor %}
         </div>
-
-        <h2 class="blog-card-title">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </h2>
-
-        <p class="blog-card-excerpt">
-          {{ post.excerpt | strip_html | truncate: 100 }}
-        </p>
-
-        <a href="{{ post.url | relative_url }}" class="blog-card-link">
-          Read →
-        </a>
       </div>
-    </article>
-    {% endfor %}
-  </div>
+
+      <h2 class="blog-card__title">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h2>
+
+      <p class="blog-card__excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+
+      <span class="blog-card__more" aria-hidden="true">
+        Read article {% include icon.html name="chevron-right" size=14 %}
+      </span>
+    </div>
+  </article>
+  {% endfor %}
 </section>

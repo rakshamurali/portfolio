@@ -2,52 +2,43 @@
 layout: default
 ---
 
-<main>
-  <!-- HERO -->
-  <section class="blog-post-hero section-dark">
-    <div class="container blog-post-center">
-      <div class="blog-post-meta">
-        <span>{{ page.date | date: "%B %d, %Y" }}</span>
-
-        {% if page.categories %}
-        <div class="blog-tags">
-          {% for category in page.categories %}
-          <span>{{ category }}</span>
-          {% endfor %}
-        </div>
-        {% endif %}
+<article class="post">
+  <header class="post-hero">
+    <div class="blog-meta reveal">
+      <time class="mono-label" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+      {% if page.categories %}
+      <div class="blog-tags">
+        {% for category in page.categories %}
+        <span>{{ category }}</span>
+        {% endfor %}
       </div>
-
-      <h1 class="blog-post-title">{{ page.title }}</h1>
-
-      {% if page.excerpt %}
-      <p class="blog-post-subtitle">{{ page.excerpt }}</p>
       {% endif %}
     </div>
-  </section>
 
-  <!-- CONTENT -->
-  <section class="blog-post-content">
-    <div class="container blog-post-container">
-      <article class="blog-post-article">{{ content }}</article>
+    <h1 class="display reveal" style="--d: 120ms">{{ page.title }}</h1>
 
-      <aside class="blog-sidebar">
-        <div class="sidebar-card">
-          <h3>About the Author</h3>
-          <p>Raksha M — Frontend Engineer building scalable React apps.</p>
-        </div>
+    {% if page.excerpt %}
+    <p class="lede reveal" style="--d: 220ms">{{ page.excerpt | strip_html }}</p>
+    {% endif %}
+  </header>
 
-        <div class="sidebar-card">
-          <h3>More Posts</h3>
-          <ul>
-            {% for post in site.posts limit:5 %}
-            <li>
-              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </aside>
-    </div>
-  </section>
-</main>
+  <div class="post-layout">
+    <div class="post-article glass">{{ content }}</div>
+
+    <aside class="post-aside">
+      <div class="post-aside__card glass glass--soft">
+        <p class="mono-label">About the author</p>
+        <p>{{ site.data.personal.name }}, a frontend engineer building scalable React apps at Jodo.</p>
+      </div>
+
+      <nav class="post-aside__card glass glass--soft" aria-label="More posts">
+        <p class="mono-label">More posts</p>
+        <ul>
+          {% for post in site.posts limit:5 %}
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </aside>
+  </div>
+</article>

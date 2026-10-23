@@ -1,81 +1,47 @@
-<section class="projects section" id="projects">
-  <div class="container">
-    <div class="section-header">
-      <p class="section-subtitle">Projects</p>
-      <h2 class="section-title">
-        Featured <span class="text-gradient">work</span>
-      </h2>
-      <p class="section-description">
-        A selection of projects that showcase my skills and experience.
-      </p>
+{%- assign company_projects = site.data.projects | where: "company", "Jodo" -%}
+{%- assign other_projects = site.data.projects | where_exp: "project", "project.company == nil" -%}
+<section class="section" id="projects">
+  <div class="section__head">
+    <div>
+      <p class="badge reveal" style="--d: 120ms">Selected Work</p>
+      <h2 class="headline reveal" style="--d: 180ms">Things I've<br />built.</h2>
     </div>
+    <p class="lede screen__aside reveal" style="--d: 220ms">
+      Live products at Jodo, plus the college and personal projects that got me here.
+    </p>
+  </div>
 
-    <!-- Company Projects -->
-    <div class="projects-section-title">
-      <h3><i class="fas fa-building"></i> At Jodo</h3>
+  <div class="projects">
+    {% for group in (1..2) %}
+    {%- if group == 1 -%}
+      {%- assign items = company_projects -%}{%- assign label = "At Jodo" -%}
+    {%- else -%}
+      {%- assign items = other_projects -%}{%- assign label = "Personal & College" -%}
+    {%- endif -%}
+    <div class="projects__group">
+      <p class="mono-label projects__label reveal">/ {{ label }}</p>
+      <ol class="panel glass glass--soft">
+        {% for project in items %}
+        <li class="panel__row reveal" style="--d: {{ forloop.index0 | times: 80 | plus: 150 }}ms">
+          <span class="panel__index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          <div>
+            <h3 class="panel__title">
+              {% if project.live_demo %}
+              <a href="{{ project.live_demo }}" target="_blank" rel="noopener" class="panel__link">
+                {{ project.title }} {% include icon.html name="arrow-up-right" size=16 class="panel__chevron" %}
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
+              {% else %}
+              {{ project.title }}
+              {% endif %}
+            </h3>
+            <p class="panel__text">{{ project.description }}</p>
+            <p class="tags">{{ project.tags | join: " · " }}</p>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
     </div>
-    <div class="projects-grid">
-      {% assign company_projects = site.data.projects | where: "company", "Jodo"
-      %} {% for project in company_projects %}
-      <div class="project-card glass-card card-hover">
-        <div class="project-card-icon project-card-icon--{{ project.color }}">
-          <i class="fas fa-{{ project.icon }}"></i>
-        </div>
-        <h3 class="project-card-title">{{ project.title }}</h3>
-        <p class="project-card-description">{{ project.description }}</p>
-        <div class="project-card-tags">
-          {% for tag in project.tags %}
-          <span class="project-card-tag">{{ tag }}</span>
-          {% endfor %}
-        </div>
-        <div class="project-card-links">
-          {% if project.live_demo %}
-          <a
-            href="{{ project.live_demo }}"
-            target="_blank"
-            rel="noopener"
-            class="project-card-link project-card-link--primary"
-          >
-            <i class="fas fa-external-link-alt"></i> Live Demo
-          </a>
-          {% endif %} {% if project.source_code and project.company != "Jodo" %}
-          <a href="{{ project.source_code }}" class="project-card-link">
-            <i class="fab fa-github"></i> Source Code
-          </a>
-        {% endif %}
-        
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-
-    <!-- Other Projects -->
-    <div class="projects-section-title projects-section-title--secondary">
-      <h3><i class="fas fa-user"></i> Personal & College Projects</h3>
-    </div>
-    <div class="projects-grid">
-      {% assign other_projects = site.data.projects | where_exp: "project",
-      "project.company == nil" %} {% for project in other_projects %}
-      <div class="project-card glass-card card-hover">
-        <div class="project-card-icon project-card-icon--{{ project.color }}">
-          <i class="fas fa-{{ project.icon }}"></i>
-        </div>
-        <h3 class="project-card-title">{{ project.title }}</h3>
-        <p class="project-card-description">{{ project.description }}</p>
-        <div class="project-card-tags">
-          {% for tag in project.tags %}
-          <span class="project-card-tag">{{ tag }}</span>
-          {% endfor %}
-        </div>
-        <div class="project-card-links">
-          {% if project.source_code %}
-          <a href="{{ project.source_code }}" class="project-card-link">
-            <i class="fab fa-github"></i> Source Code
-          </a>
-          {% endif %}
-        </div>
-      </div>
-      {% endfor %}
-    </div>
+    {% endfor %}
   </div>
 </section>

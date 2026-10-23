@@ -14,6 +14,20 @@ github:
   url: "https://github.com/raksha-m"
   display: "github.com/raksha-m"
 
+# Hero
+services:
+  - "Frontend Engineering"
+  - "React & TypeScript"
+  - "Scalable UI Architecture"
+
+hero:
+  intro: "I build web applications that bring clarity, speed, and polish to the products people use every day."
+  badge: "Software Engineer at Jodo"
+  headline:
+    - "Clean. Scalable."
+    - "Shipped."
+  card_role: "Frontend Engineer · Bangalore"
+
 # Stats
 stats:
   - value: "2+"
@@ -35,6 +49,10 @@ tech_stack:
 
 # About
 about:
+  lede: "I don't just write components. I design systems that stay fast, readable, and easy to grow."
+  headline:
+    - "Built to scale,"
+    - "made to feel right."
   summary: "Frontend engineer with 2+ years of experience building scalable and production-grade web applications. I specialize in React and modern frontend ecosystems, focusing on performance, maintainability, and seamless user experiences. I have built end-to-end web solutions, developed reusable architectures, and contributed to complex integrations across platforms."
 
   highlights:

@@ -1,0 +1,151 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  border-bottom: 1px solid var(--line);
+  transition: background-color var(--t-fast);
+
+  // Once the page scrolls, a light frost keeps the links readable over content.
+  &.is-scrolled,
+  &.is-open {
+    background: rgba(10, 10, 10, 0.25);
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: var(--nav-h);
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+
+    @media (min-width: 640px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__logo-dim {
+    color: var(--fg-60);
+  }
+
+  &__links {
+    display: none;
+    gap: 2rem;
+    font-size: 0.875rem;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+    @media (min-width: 1024px) {
+      gap: 2.5rem;
+    }
+
+    a {
+      color: var(--fg-85);
+      transition: color var(--t-fast);
+
+      &:hover {
+        color: var(--fg);
+      }
+    }
+
+    sup {
+      margin-left: 0.125rem;
+      font-size: 0.625rem;
+      color: var(--fg-60);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__cta {
+    font-size: 0.75rem;
+
+    @media (min-width: 640px) {
+      padding: 0.5rem 1.25rem;
+      font-size: 0.875rem;
+    }
+    @media (max-width: 479px) {
+      display: none;
+    }
+  }
+
+  &__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.375rem;
+    background: var(--glass);
+    -webkit-backdrop-filter: var(--blur);
+    backdrop-filter: var(--blur);
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__toggle-close {
+    display: none;
+  }
+
+  &.is-open &__toggle-open {
+    display: none;
+  }
+
+  &.is-open &__toggle-close {
+    display: inline-flex;
+  }
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem var(--gutter) 1.5rem;
+  border-top: 1px solid var(--line);
+
+  &[hidden] {
+    display: none;
+  }
+
+  > a:not(.btn-solid) {
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 1.125rem;
+    color: var(--fg-85);
+
+    sup {
+      margin-left: 0.125rem;
+      font-size: 0.625rem;
+      color: var(--fg-60);
+    }
+  }
+
+  &__cta {
+    margin-top: 1.25rem;
+    align-self: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}

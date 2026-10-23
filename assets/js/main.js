@@ -1,178 +1,210 @@
-// Navigation scroll effect
-const navbar = document.getElementById("navbar");
-const navToggle = document.getElementById("nav-toggle");
-const mobileMenu = document.getElementById("mobile-menu");
-const backToTop = document.getElementById("back-to-top");
-const heroCard = document.getElementById("hero-card");
-const mobileClose = document.getElementById("mobile-close");
+(() => {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-if (mobileClose) {
-  mobileClose.addEventListener("click", () => {
-    mobileMenu.classList.remove("active");
-    const icon = navToggle.querySelector("i");
-    icon.classList.remove("fa-times");
-    icon.classList.add("fa-bars");
-  });
-}
+  /* ---------------- Scroll-scrubbed video background ---------------- */
+  const stage = document.getElementById("scroll-video");
 
-// Navbar scroll effect
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-});
+  if (stage) {
+    const video = stage.querySelector("video");
+    const canvas = stage.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+    const frames = [];
+    let framesReady = false;
+    let target = 0;
+    let smoothed = 0;
+    let lastIndex = -1;
+    let lastSeek = -1;
 
-// Mobile menu toggle
-if (navToggle && mobileMenu) {
-  navToggle.addEventListener("click", () => {
-    mobileMenu.classList.toggle("active");
-    const icon = navToggle.querySelector("i");
-    if (mobileMenu.classList.contains("active")) {
-      icon.classList.remove("fa-bars");
-      icon.classList.add("fa-times");
-    } else {
-      icon.classList.remove("fa-times");
-      icon.classList.add("fa-bars");
-    }
-  });
+    const markFrame = () => stage.classList.add("has-frame");
+    video.addEventListener("loadeddata", markFrame, { once: true });
+    if (video.readyState >= 2) markFrame();
 
-  // Close mobile menu on link click
-  mobileMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.remove("active");
-      const icon = navToggle.querySelector("i");
-      icon.classList.remove("fa-times");
-      icon.classList.add("fa-bars");
-    });
-  });
-}
+    const progressFromScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      return max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
+    };
 
-// Back to top
-if (backToTop) {
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  });
-}
+    const sizeCanvas = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(window.innerWidth * dpr);
+      canvas.height = Math.round(window.innerHeight * dpr);
+      lastIndex = -1;
+    };
 
-// Hero card 3D tilt effect
-if (heroCard) {
-  heroCard.addEventListener("mousemove", (e) => {
-    const rect = heroCard.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const mouseX = e.clientX - centerX;
-    const mouseY = e.clientY - centerY;
+    // object-fit: cover, centred
+    const drawCover = (img, w, h) => {
+      const scale = Math.max(canvas.width / w, canvas.height / h);
+      const dw = w * scale;
+      const dh = h * scale;
+      ctx.drawImage(img, (canvas.width - dw) / 2, (canvas.height - dh) / 2, dw, dh);
+    };
 
-    const rotateX = (mouseY / (rect.height / 2)) * -10;
-    const rotateY = (mouseX / (rect.width / 2)) * 10;
+    const render = () => {
+      if (framesReady) {
+        const index = Math.round(smoothed * (frames.length - 1));
+        if (index !== lastIndex) {
+          const frame = frames[index];
+          drawCover(frame, frame.width, frame.height);
+          lastIndex = index;
+        }
+      } else if (video.duration) {
+        const time = smoothed * (video.duration - 0.05);
+        if (Math.abs(time - lastSeek) > 0.04 && !video.seeking) {
+          video.currentTime = time;
+          lastSeek = time;
+        }
+      }
+    };
 
-    heroCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  });
+    const tick = () => {
+      smoothed += (target - smoothed) * 0.12;
+      if (Math.abs(target - smoothed) < 0.0005) smoothed = target;
+      render();
+      requestAnimationFrame(tick);
+    };
 
-  heroCard.addEventListener("mouseleave", () => {
-    heroCard.style.transform =
-      "perspective(1000px) rotateX(0deg) rotateY(0deg)";
-  });
-}
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+    // Decode frames up-front from an offscreen copy so scrubbing never waits on seeks.
+    const seekTo = (v, time) =>
+      new Promise((resolve) => {
+        v.addEventListener("seeked", resolve, { once: true });
+        v.currentTime = time;
       });
+
+    const buildFrameCache = async () => {
+      const source = document.createElement("video");
+      source.muted = true;
+      source.playsInline = true;
+      source.preload = "auto";
+      source.src = video.currentSrc || video.src;
+
+      await new Promise((resolve, reject) => {
+        source.addEventListener("loadeddata", resolve, { once: true });
+        source.addEventListener("error", reject, { once: true });
+      });
+
+      const small = window.innerWidth < 768;
+      const maxWidth = small ? 640 : 960;
+      const count = Math.min(small ? 60 : 90, Math.max(24, Math.round(source.duration * 12)));
+      const width = Math.min(maxWidth, source.videoWidth);
+      const height = Math.round((width / source.videoWidth) * source.videoHeight);
+      const scratch = document.createElement("canvas");
+      scratch.width = width;
+      scratch.height = height;
+      const sctx = scratch.getContext("2d");
+
+      for (let i = 0; i < count; i++) {
+        await seekTo(source, (i / (count - 1)) * (source.duration - 0.05));
+        sctx.drawImage(source, 0, 0, width, height);
+        frames.push(await createImageBitmap(scratch));
+      }
+
+      source.removeAttribute("src");
+      source.load();
+      framesReady = true;
+      lastIndex = -1;
+      stage.classList.add("frames-ready");
+    };
+
+    sizeCanvas();
+    window.addEventListener("resize", sizeCanvas);
+
+    if (reduceMotion) {
+      // Show a single still frame; no scroll-linked motion.
+      video.addEventListener("loadedmetadata", () => (video.currentTime = 0), { once: true });
+    } else {
+      target = smoothed = progressFromScroll();
+      window.addEventListener("scroll", () => (target = progressFromScroll()), { passive: true });
+      window.addEventListener("resize", () => (target = progressFromScroll()));
+      requestAnimationFrame(tick);
+
+      const startCache = () =>
+        setTimeout(() => {
+          if (!("createImageBitmap" in window)) return;
+          buildFrameCache().catch(() => {
+            /* keep the seek fallback */
+          });
+        }, 300);
+      if (video.readyState >= 2) startCache();
+      else video.addEventListener("loadeddata", startCache, { once: true });
     }
-  });
-});
-
-// Intersection Observer for scroll animations
-const observerOptions = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 0.1,
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("animate-in");
-      observer.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-// Observe elements for animation
-document
-  .querySelectorAll(
-    ".section-header, .experience-card, .project-card, .skills-category, .award-card, .awards-stat"
-  )
-  .forEach((el) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(20px)";
-    el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-    observer.observe(el);
-  });
-
-// Add animation class styles
-const style = document.createElement("style");
-style.textContent = `
-  .animate-in {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
   }
-`;
-document.head.appendChild(style);
 
-// Contact form handling
-const contactForm = document.getElementById("contact-form");
-if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+  /* ---------------- Reveal on enter ---------------- */
+  const revealEls = document.querySelectorAll(".reveal");
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  }
 
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
+  /* ---------------- Navigation ---------------- */
+  const navbar = document.getElementById("navbar");
+  const navToggle = document.getElementById("nav-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-    // Show loading state
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    submitBtn.disabled = true;
+  const onScroll = () => navbar.classList.toggle("is-scrolled", window.scrollY > 40);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
 
-    // Simulate form submission
-    setTimeout(() => {
-      submitBtn.innerHTML =
-        '<span style="color: var(--accent-green)"><i class="fas fa-check"></i> Message Sent!</span>';
-      contactForm.reset();
+  const setMenu = (open) => {
+    mobileMenu.hidden = !open;
+    navbar.classList.toggle("is-open", open);
+    navToggle.setAttribute("aria-expanded", String(open));
+    navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  };
 
-      setTimeout(() => {
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-      }, 3000);
-    }, 1500);
-  });
-}
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener("click", () => setMenu(mobileMenu.hidden));
+    mobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !mobileMenu.hidden) {
+        setMenu(false);
+        navToggle.focus();
+      }
+    });
+  }
 
-console.log("Portfolio loaded successfully! 🚀");
+  /* ---------------- Back to top ---------------- */
+  const backToTop = document.getElementById("back-to-top");
+  if (backToTop) {
+    backToTop.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" })
+    );
+  }
 
-document
-  .getElementById("contact-form")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
+  /* ---------------- Contact form (opens the visitor's mail client) ---------------- */
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    const errorEl = document.getElementById("form-error");
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    const subject = `New message from ${name}`;
+      const fields = ["name", "email", "message"].map((id) => document.getElementById(id));
+      const invalid = fields.filter((field) => !field.value.trim() || !field.checkValidity());
+      fields.forEach((field) => field.setAttribute("aria-invalid", String(invalid.includes(field))));
 
-    const body = `Hello Raksha,
+      if (invalid.length) {
+        errorEl.textContent = "Please fill in your name, a valid email address and a message.";
+        invalid[0].focus();
+        return;
+      }
+      errorEl.textContent = "";
+
+      const [name, email, message] = fields.map((field) => field.value.trim());
+      const subject = `New message from ${name}`;
+      const body = `Hello Raksha,
 
 You have received a new message from your portfolio:
 
@@ -182,9 +214,9 @@ Email: ${email}
 Message:
 ${message}`;
 
-    const mailtoLink = `mailto:rakshamuralimohan@gmail.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailtoLink;
-  });
+      window.location.href = `mailto:rakshamuralimohan@gmail.com?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
+    });
+  }
+})();

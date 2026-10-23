@@ -1,7 +1,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="theme-color" content="#0a0a0a" />
 
   <title>
     {% if page.title %}{{ page.title }} | {% endif %}{{ site.name }}
@@ -11,7 +11,7 @@
   <meta property="og:title" content="{{ page.title | default: site.name }}" />
   <meta
     property="og:description"
-    content="{{ page.excerpt | default: site.description }}"
+    content="{{ page.excerpt | default: site.description | strip_html | strip }}"
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
@@ -22,33 +22,26 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
-  <meta
-    name="twitter:image"
-    content="https://rakshaportlio.co.in/assets/images/thumbnail.png"
-  />
-
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{{ page.title | default: site.name }}" />
   <meta
     name="twitter:description"
-    content="{{ page.excerpt | default: site.description }}"
+    content="{{ page.excerpt | default: site.description | strip_html | strip }}"
   />
   <meta
     name="twitter:image"
     content="{{ page.image | default: site.default_image | absolute_url }}"
   />
+
+  <!-- Reveal animations only hide content once JS is known to run -->
+  <script>document.documentElement.classList.add("js");</script>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
-  />
-
-  <!-- Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
 
   <!-- Styles -->
@@ -58,7 +51,7 @@
   <link
     rel="icon"
     type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👩‍💻</text></svg>"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.5' stroke-linejoin='round'><rect width='24' height='24' rx='5' fill='%230a0a0a' stroke='none'/><path d='M19 15V9a1.6 1.6 0 0 0-.8-1.4l-5.4-3.1a1.6 1.6 0 0 0-1.6 0L5.8 7.6A1.6 1.6 0 0 0 5 9v6a1.6 1.6 0 0 0 .8 1.4l5.4 3.1a1.6 1.6 0 0 0 1.6 0l5.4-3.1A1.6 1.6 0 0 0 19 15z'/></svg>"
   />
 
   {% seo %}
